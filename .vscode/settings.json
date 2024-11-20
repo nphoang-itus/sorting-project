@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "exception": "cpp",
+        "fstream": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "xstring": "cpp"
+    }
+}
