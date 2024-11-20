@@ -8,27 +8,30 @@ void swap(int &a, int &b) {
 	b = temp;
 }
 
-int max(int arr[], int n, long long &countComparison) {
+int max(int array[], int n, long long &countComparison) {
 	int max_idx = 0;
+
 	for (int i = 1; ++countComparison && (i < n); i++)
-		if (++countComparison && (arr[max_idx] < arr[i]))
+		if (++countComparison && (array[max_idx] < array[i]))
 			max_idx = i;
 
-	return arr[max_idx];
+	return array[max_idx];
 }
 
 int max(int a, int b, long long &countComparison) {
 	countComparison++;
+
 	return (a > b) ? a : b;
 }
 
-int max(int arr[], int n) {
+int max(int array[], int n) {
 	int max_idx = 0;
+
 	for (int i = 1; i < n; i++)
-		if (arr[max_idx] < arr[i])
+		if (array[max_idx] < array[i])
 			max_idx = i;
 
-	return arr[max_idx];
+	return array[max_idx];
 }
 
 int max(int a, int b) {
