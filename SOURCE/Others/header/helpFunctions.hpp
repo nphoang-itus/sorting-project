@@ -2,13 +2,23 @@
 #ifndef HELP_FUNCTIONS
 #define HELP_FUNCTIONS
 
-#include <vector> // để tạm he
+#include <vector>
+#include <time.h>
+#include <iostream>
+#include <fstream>
+#include <vector>
 
 template <class T> void swap(T &a, T &b);
-int max(int array[], int n, long long &countComparison);
-int max(int a, int b, long long &countComparison);
+int max(int array[], int n, long long &count_comparison);
+int max(int a, int b, long long &count_comparison);
 int max(int array[], int n);
 int max(int a, int b);
 int random(int l, int r);
 
-#endif // HELP_FUNCTIONS
+bool readData(std::vector<int> &arr, char *fileName);
+bool writeData(std::vector<int> &arr, char *fileName);
+bool isNumber(char *str);
+int getOutputParameterID(char *param_flag);
+bool isOutputParameterID(char *param_flag);
+
+#endif

@@ -36,3 +36,9 @@ template void selectionSort(std::vector<float>&);
 template void selectionSort(std::vector<double>&);
 template void selectionSort(std::vector<char>&);
 
+//selectionSortWithComparison
+template void selectionSortWithComparison(std::vector<int>, long long&);
+template void selectionSortWithComparison(std::vector<long long>, long long&);
+template void selectionSortWithComparison(std::vector<float>, long long&);
+template void selectionSortWithComparison(std::vector<double>, long long&);
+template void selectionSortWithComparison(std::vector<char>, long long&);
