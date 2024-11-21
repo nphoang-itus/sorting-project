@@ -15,7 +15,7 @@ void selectionSort(std::vector<T>& array) {
 }
 
 template <class T>
-void selectionSortWithComparison(std::vector<T> array, long long &countComparison) {
+void selectionSort(std::vector<T> array, long long &countComparison) {
     countComparison = 0;
     for (size_t i = 0; ++countComparison && i < array.size() - 1; ++i) {
         size_t minIndex = i;
@@ -36,9 +36,9 @@ template void selectionSort(std::vector<float>&);
 template void selectionSort(std::vector<double>&);
 template void selectionSort(std::vector<char>&);
 
-//selectionSortWithComparison
-template void selectionSortWithComparison(std::vector<int>, long long&);
-template void selectionSortWithComparison(std::vector<long long>, long long&);
-template void selectionSortWithComparison(std::vector<float>, long long&);
-template void selectionSortWithComparison(std::vector<double>, long long&);
-template void selectionSortWithComparison(std::vector<char>, long long&);
+//selectionSort with Compare
+template void selectionSort(std::vector<int>, long long&);
+template void selectionSort(std::vector<long long>, long long&);
+template void selectionSort(std::vector<float>, long long&);
+template void selectionSort(std::vector<double>, long long&);
+template void selectionSort(std::vector<char>, long long&);
