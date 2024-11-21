@@ -2,7 +2,9 @@
 #ifndef SELECTION_SORT_HPP
 #define SELECTION_SORT_HPP
 
-void selectionSort(int array[], int n, long long &countComparison);
-void selectionSort(int array[], int n);
+template <class T>
+void selectionSort(std::vector<T>& array);
+template <class T>
+void selectionSortWithComparison(std::vector<T> array, long long &countComparison);
 
 #endif // SELECTION_SORT_HPP
