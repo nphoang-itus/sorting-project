@@ -3,9 +3,9 @@
 #define HELP_FUNCTIONS
 
 #include <vector>
-#include <time.h>
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 void swap(int &a, int &b);
 int max(int array[], int n, long long &count_comparison);

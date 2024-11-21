@@ -107,3 +107,13 @@ int getOutputParameterID(char *param_flag) {
 bool isOutputParameterID(char *param_flag) {
     return getOutputParameterID(param_flag) + 1;
 }
+
+bool isNumber(char *str) {
+	int len = strlen(str);
+
+    for (int i = 0; i < len; i++) {
+        if (str[i] < '0' || str[i] > '9') return false;
+    }
+	
+    return true;
+}
