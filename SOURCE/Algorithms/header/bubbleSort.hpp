@@ -4,7 +4,7 @@
 
 #include "../Others/header/helpFunctions.hpp"
 
-void bubbleSort(int array[], int n, long long &countComparison);
+void bubbleSort(int array[], int n, long long &count_comparison);
 void bubbleSort(int array[], int n);
 
 #endif // BUBBLE_SORT_HPP

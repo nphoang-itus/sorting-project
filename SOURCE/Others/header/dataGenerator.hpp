@@ -6,14 +6,14 @@
 #include <fstream>
 #include <cmath>
 #include <ctime>
-
-using namespace std;
+#include <string>
 
 template <class T>
-void Swap(T &a, T &b);
 void generateRandomData(int a[], int n);
 void generateSortedData(int a[], int n);
 void generateReverseData(int a[], int n);
 void generateData(int a[], int n, int dataType);
+std::string getDataOrderName(int data_order_id);
+int getDataOrderID(char agr_flag[]);
 
 #endif

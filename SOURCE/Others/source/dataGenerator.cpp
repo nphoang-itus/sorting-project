@@ -1,14 +1,5 @@
 #include "../header/dataGenerator.hpp"
-
-// From our teacher
-
-template <class T>
-void Swap(T &a, T &b)
-{
-	T x = a;
-	a = b;
-	b = x;
-}
+#include "../header/helpFunctions.hpp"
 
 //-------------------------------------------------
 
@@ -55,7 +46,7 @@ void generateNearlySortedData(int a[], int n)
 	{
 		int r1 = rand() % n;
 		int r2 = rand() % n;
-		Swap(a[r1], a[r2]);
+		swap(a[r1], a[r2]);
 	}
 }
 
@@ -76,6 +67,31 @@ void generateData(int a[], int n, int dataType)
 		generateNearlySortedData(a, n);
 		break;
 	default:
-		printf("Error: unknown data type!\n");
+		std::cout << "Error: unknown data type!\n";
 	}
+}
+
+std::string getDataOrderName(int data_order_id) {
+    switch (data_order_id) {
+        case 0:
+            return "Randomized data";
+        case 1:
+            return "Sorted data";
+        case 2:
+            return "Reverse sorted data";
+        case 3:
+            return "Nearly sorted data";
+        default:
+            return "Unknown data order";
+    }
+}
+
+int getDataOrderID(char agr_flag[]) {
+
+    if (!strcmp(agr_flag, "-rand")) return 0;
+    else if (!strcmp(agr_flag, "-sorted")) return 1;
+    else if (!strcmp(agr_flag, "-rev")) return 2;
+    else if (!strcmp(agr_flag, "-nsorted")) return 3;
+
+    return -1;
 }
