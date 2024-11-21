@@ -1,9 +1,10 @@
-#include "helpFunctions.hpp"
+#include "../header/helpFunctions.hpp"
 #include <time.h>
 #include <stdlib.h>
 
-void swap(int &a, int &b) {
-	int temp = a;
+template <class T>
+void swap(T &a, T &b) {
+	T temp = a;
 	a = b;
 	b = temp;
 }
@@ -44,3 +45,9 @@ int random(int l, int r) {
 	
 	return 1ll * ran % (r - l + 1) + l;
 }
+
+template void swap(int&, int&);
+template void swap(long long&, long long&);
+template void swap(float&, float&);
+template void swap(double&, double&);
+template void swap(char&, char&);

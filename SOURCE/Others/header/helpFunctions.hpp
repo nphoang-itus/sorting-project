@@ -2,7 +2,9 @@
 #ifndef HELP_FUNCTIONS
 #define HELP_FUNCTIONS
 
-void swap(int &a, int &b);
+#include <vector> // để tạm he
+
+template <class T> void swap(T &a, T &b);
 int max(int array[], int n, long long &countComparison);
 int max(int a, int b, long long &countComparison);
 int max(int array[], int n);

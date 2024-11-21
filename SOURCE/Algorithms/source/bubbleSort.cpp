@@ -1,4 +1,5 @@
 #include "../header/bubbleSort.hpp"
+#include "../header/helpFunctions.hpp"
 
 void bubbleSort(int arr[], int n, long long &count_comparison) {
     count_comparison = 0;
@@ -10,6 +11,7 @@ void bubbleSort(int arr[], int n, long long &count_comparison) {
         // Bring the largest element to the end
         for (int j = 0; ++count_comparison && (j < n - i - 1); j++) {
             if (++count_comparison && (arr[j] > arr[j + 1])) {
+                // swap(arr[j], arr[j + 1]);
                 swap(arr[j], arr[j + 1]);
                 swapped = true;
             }
@@ -30,7 +32,8 @@ void bubbleSort(int arr[], int n) {
         // Bring the largest element to the end
         for (int j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                swap(arr[j], arr[j + 1]);
+                // swap(arr[j], arr[j + 1]);
+                swap(arr[i], arr[j + 1]);
                 swapped = true;
             }
         }
