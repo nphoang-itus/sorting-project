@@ -1,7 +1,6 @@
 #pragma once
 #ifndef HEAP_SORT_HPP
 #define HEAP_SORT_HPP
-#include "../../myLibrary.hpp"
 #include "../../Others/header/helpFunctions.hpp"
 
 
