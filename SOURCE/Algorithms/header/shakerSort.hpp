@@ -1,7 +1,6 @@
 #pragma once
 #ifndef SHAKER_SORT_HPP
 #define SHAKER_SORT_HPP
-#include "../../myLibrary.hpp"
 #include "../../Others/header/helpFunctions.hpp"
 
 template<class T>
