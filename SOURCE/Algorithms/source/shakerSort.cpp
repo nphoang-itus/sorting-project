@@ -1,7 +1,7 @@
 #include "../header/shakerSort.hpp"
 
 template<class T>
-void shakerSort(std::vector<T> array, int n, long long &count_comparison) 
+void shakerSort(std::vector<T>& array, int n, long long &count_comparison) 
 {
     //cài đặt hàm shakerSort
     int start = 0;                          //biến giữ vị trí biên trái
@@ -28,7 +28,7 @@ void shakerSort(std::vector<T> array, int n, long long &count_comparison)
 }
 
 template<class T>
-void shakerSort(std::vector<T> array, int n) {
+void shakerSort(std::vector<T>& array, int n) {
     //cài đặt hàm shakerSort
     int start = 0;                          //Biến giữ vị trí biên trái
     int End = n - 1;                        //Biến giữ vị trí biên phải
@@ -55,15 +55,15 @@ void shakerSort(std::vector<T> array, int n) {
 
 // INSTANTIATION
 //shakerSort
-template void shakerSort(std::vector<int>, int);
-template void shakerSort(std::vector<long long>, int);
-template void shakerSort(std::vector<double>, int);
-template void shakerSort(std::vector<float>, int);
-template void shakerSort(std::vector<char>, int);
+template void shakerSort(std::vector<int>&, int);
+template void shakerSort(std::vector<long long>&, int);
+template void shakerSort(std::vector<double>&, int);
+template void shakerSort(std::vector<float>&, int);
+template void shakerSort(std::vector<char>&, int);
 
 //shakerSort with compare
-template void shakerSort(std::vector<int>, int, long long&);
-template void shakerSort(std::vector<long long>, int, long long&);
-template void shakerSort(std::vector<double>, int, long long&);
-template void shakerSort(std::vector<float>, int, long long&);
-template void shakerSort(std::vector<char>, int, long long&);
+template void shakerSort(std::vector<int>&, int, long long&);
+template void shakerSort(std::vector<long long>&, int, long long&);
+template void shakerSort(std::vector<double>&, int, long long&);
+template void shakerSort(std::vector<float>&, int, long long&);
+template void shakerSort(std::vector<char>&, int, long long&);
