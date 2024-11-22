@@ -52,7 +52,7 @@ void heapify(std::vector<T>& arr, int n, int i)
     }
     if (largest != i)                                   //nếu node cha không phải lớn nhất thì đổi chỗ sao cho node cha lớn nhất
     {
-        Swap(arr[i], arr[largest]);
+        swap(arr[i], arr[largest]);
         heapify(arr, n, largest);                       //đệ quy xuống node con ở dưới để node con ở dưới lớn nhất
     }
 }
