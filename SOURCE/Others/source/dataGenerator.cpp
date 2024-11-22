@@ -4,40 +4,40 @@
 //-------------------------------------------------
 
 // This function generates a random array
-void generateRandomData(int a[], int n)
+void generateRandomData(std::vector<int> &arr, int n)
 {
 	srand((unsigned int)time(NULL));
 
 	for (int i = 0; i < n; i++)
 	{
-		a[i] = rand() % n;
+		arr[i] = rand() % n;
 	}
 }
 
 // This function generates a sorted array (ascending order)
-void generateSortedData(int a[], int n)
+void generateSortedData(std::vector<int> &arr, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		a[i] = i;
+		arr[i] = i;
 	}
 }
 
 // This function generates a reverse-sorted array (descending order)
-void generateReverseData(int a[], int n)
+void generateReverseData(std::vector<int> &arr, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		a[i] = n - 1 - i;
+		arr[i] = n - 1 - i;
 	}
 }
 
 // This function generates a nearly-sorted array
-void generateNearlySortedData(int a[], int n)
+void generateNearlySortedData(std::vector<int> &arr, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		a[i] = i;
+		arr[i] = i;
 	}
 
 	srand((unsigned int) time(NULL));
@@ -46,25 +46,25 @@ void generateNearlySortedData(int a[], int n)
 	{
 		int r1 = rand() % n;
 		int r2 = rand() % n;
-		swap<int>(a[r1], a[r2]);
+		swap<int>(arr[r1], arr[r2]);
 	}
 }
 
-void generateData(int a[], int n, int dataType)
+void generateData(std::vector<int> &arr, int n, int dataType)
 {
 	switch (dataType)
 	{
 	case 0:	
-		generateRandomData(a, n);
+		generateRandomData(arr, n);
 		break;
 	case 1:	
-		generateSortedData(a, n);
+		generateSortedData(arr, n);
 		break;
 	case 2:	
-		generateReverseData(a, n);
+		generateReverseData(arr, n);
 		break;
 	case 3:	
-		generateNearlySortedData(a, n);
+		generateNearlySortedData(arr, n);
 		break;
 	default:
 		std::cout << "Error: unknown data type!\n";

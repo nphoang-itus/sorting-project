@@ -3,6 +3,7 @@
 #define COMMAND_LINE_HPP
 
 #include "sortExperiment.hpp"
+#include <cstring>
 
 void executeWithCommandLine(SortExperiment &experiment, int &argv, char **&argc);
 void commandLine1(SortExperiment &experiment, int &argv, char **&argc);

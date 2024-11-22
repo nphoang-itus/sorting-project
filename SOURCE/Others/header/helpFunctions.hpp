@@ -3,9 +3,9 @@
 #define HELP_FUNCTIONS
 
 #include <vector>
-#include <time.h>
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <vector>
 
 template <class T> void swap(T &a, T &b);

@@ -7,12 +7,13 @@
 #include <cmath>
 #include <ctime>
 #include <string>
+#include <vector>
 
 template <class T>
-void generateRandomData(int a[], int n);
-void generateSortedData(int a[], int n);
-void generateReverseData(int a[], int n);
-void generateData(int a[], int n, int dataType);
+void generateRandomData(std::vector<int> &arr, int n);
+void generateSortedData(std::vector<int> &arr, int n);
+void generateReverseData(std::vector<int> &arr, int n);
+void generateData(std::vector<int> &arr, int n, int dataType);
 std::string getDataOrderName(int data_order_id);
 int getDataOrderID(char agr_flag[]);
 

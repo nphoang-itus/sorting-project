@@ -4,20 +4,22 @@
 
 #include <iostream>
 #include <chrono>
+#include <vector>
 
-#include "../Algorithms/header/selectionSort.hpp"
-#include "../Algorithms/header/binaryInsertionSort.hpp"
-#include "../Algorithms/header/insertionSort.hpp"
-#include "../Algorithms/header/bubbleSort.hpp"
-#include "../Algorithms/header/shakerSort.hpp"
-#include "../Algorithms/header/shellSort.hpp"
-#include "../Algorithms/header/heapSort.hpp"
-#include "../Algorithms/header/mergeSort.hpp"
-#include "../Algorithms/header/quickSort.hpp"
-#include "../Algorithms/header/countingSort.hpp"
-#include "../Algorithms/header/radixSort.hpp"
-#include "../Algorithms/header/flashSort.hpp"
+// #include "../Algorithms/header/selectionSort.hpp"
+// #include "../Algorithms/header/binaryInsertionSort.hpp"
+// #include "../Algorithms/header/insertionSort.hpp"
+// #include "../Algorithms/header/bubbleSort.hpp"
+// #include "../Algorithms/header/shakerSort.hpp"
+// #include "../Algorithms/header/shellSort.hpp"
+// #include "../Algorithms/header/heapSort.hpp"
+// #include "../Algorithms/header/mergeSort.hpp"
+// #include "../Algorithms/header/quickSort.hpp"
+// #include "../Algorithms/header/countingSort.hpp"
+// #include "../Algorithms/header/radixSort.hpp"
+// #include "../Algorithms/header/flashSort.hpp"
 
+#define NUMBER_DATA_ORDER 4
 #define NUMBER_SORT_ALGORITHM 12
 #define SELECTION_SORT 0
 #define INSERTION_SORT 1
@@ -41,20 +43,20 @@ class ResultOfSorting {
 class SortExperiment {
     public:
         std::vector<std::vector<int>> arr;
-        std::string filename;
+        std::string file_name;
         int output_parameter;
+        int input_size;
         int data_order_id;
-        int algorithm_id[2];
+        int algorithm_id[2]; // for mode compare
         bool is_algorithm_mode;
         bool is_input_from_file;
-        bool is_running_both;
+        bool is_running_all;
         std::vector<ResultOfSorting> results;
 
         SortExperiment();
         ~SortExperiment();
         void runCompareMode();
         void runAlgorithmMode();
-
         void printResult();
 };
 
