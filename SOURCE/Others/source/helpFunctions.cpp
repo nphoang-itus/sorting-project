@@ -1,7 +1,4 @@
 #include "../header/helpFunctions.hpp"
-#include <time.h>
-#include <stdlib.h>
-#include "../header/helpFunctions.hpp"
 
 template <class T>
 void swap(T &a, T &b) {

@@ -1,8 +1,9 @@
 #pragma once
-#ifndef HEAP_SORT_HPP
-#define HEAP_SORT_HPP
+
 #include "../../Others/header/helpFunctions.hpp"
 
+#ifndef HEAP_SORT_HPP
+#define HEAP_SORT_HPP
 
 template<class T>
 void heapify(std::vector<T>& array, int n, int i, long long& count_comparison);

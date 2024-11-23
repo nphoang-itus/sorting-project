@@ -1,9 +1,15 @@
+#include "../header/helpFunctions.hpp"
 #include "../header/binaryInsertionSort.hpp"
 
-void binaryInsertionSort(int array[], int n, long long &count_comparison) {
+template <class T>
+void binaryInsertionSort (std::vector<T>& array) {
 
 }
 
-void binaryInsertionSort(int array[], int n) {
+template <class T>
+void binaryInsertionSort (std::vector<T> &array, long long &countComparison) {
 
 }
+
+template void binaryInsertionSort (std::vector<int> &array, long long &countComparison);
+template void binaryInsertionSort (std::vector<int> &array);

@@ -1,13 +1,9 @@
 #pragma once
+
+#include "helpFunctions.hpp"
+
 #ifndef DATA_GENERATOR_HPP
 #define DATA_GENERATOR_HPP
-
-#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <ctime>
-#include <string>
-#include <vector>
 
 template <class T>
 void generateRandomData(std::vector<int> &arr, int n);

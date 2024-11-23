@@ -1,9 +1,9 @@
 #pragma once
-#ifndef COMMAND_LINE_HPP
-#define COMMAND_LINE_HPP
 
 #include "sortExperiment.hpp"
-#include <cstring>
+
+#ifndef COMMAND_LINE_HPP
+#define COMMAND_LINE_HPP
 
 void executeWithCommandLine(SortExperiment &experiment, int &argv, char **&argc);
 void commandLine1(SortExperiment &experiment, int &argv, char **&argc);

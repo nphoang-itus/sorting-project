@@ -1,14 +1,19 @@
 #pragma once
-#ifndef HELP_FUNCTIONS
-#define HELP_FUNCTIONS
 
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <vector>
+#include <time.h>
+#include <stdlib.h>
+#include <chrono>
 
-template <class T> void swap(T &a, T &b);
+#ifndef HELP_FUNCTIONS
+#define HELP_FUNCTIONS
+
+template <class T>
+void swap(T &a, T &b);
+
 int max(int array[], int n, long long &count_comparison);
 int max(int a, int b, long long &count_comparison);
 int max(int array[], int n);

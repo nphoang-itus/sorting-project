@@ -149,11 +149,11 @@ void flashSort(std::vector<T> &arr) {
 
 // INSTANTIATION
 //selectionSort with Compare
-template void flashSort(std::vector<int>&, long long&);
-template void flashSort(std::vector<long long>&, long long&);
-template void flashSort(std::vector<float>&, long long&);
-template void flashSort(std::vector<double>&, long long&);
-template void flashSort(std::vector<char>&, long long&);
+template void flashSort(std::vector<int>&, size_t&);
+template void flashSort(std::vector<long long>&, size_t&);
+template void flashSort(std::vector<float>&, size_t&);
+template void flashSort(std::vector<double>&, size_t&);
+template void flashSort(std::vector<char>&, size_t&);
 
 // selectionSort
 template void flashSort(std::vector<int>&);

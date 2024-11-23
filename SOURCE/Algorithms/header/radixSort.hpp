@@ -1,7 +1,9 @@
 #pragma once
+
+#include "../../Others/header/helpFunctions.hpp"
+
 #ifndef RADIX_SORT_HPP
 #define RADIX_SORT_HPP
-#include "../../Others/header/helpFunctions.hpp"
 
 template<class T>
 T getMax(std::vector<T>& array, int n, long long& count_comparison);

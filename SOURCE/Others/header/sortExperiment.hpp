@@ -1,15 +1,12 @@
 #pragma once
-#ifndef SORT_EXPERIMENT_HPP
-#define SORT_EXPERIMENT_HPP
 
-#include <iostream>
-#include <chrono>
-#include <vector>
+#include "helpFunctions.hpp"
+#include "dataGenerator.hpp"
 
 // #include "../Algorithms/header/selectionSort.hpp"
 // #include "../Algorithms/header/binaryInsertionSort.hpp"
 // #include "../Algorithms/header/insertionSort.hpp"
-// #include "../Algorithms/header/bubbleSort.hpp"
+#include "../../Algorithms/header/bubbleSort.hpp"
 // #include "../Algorithms/header/shakerSort.hpp"
 // #include "../Algorithms/header/shellSort.hpp"
 // #include "../Algorithms/header/heapSort.hpp"
@@ -18,6 +15,9 @@
 // #include "../Algorithms/header/countingSort.hpp"
 // #include "../Algorithms/header/radixSort.hpp"
 // #include "../Algorithms/header/flashSort.hpp"
+
+#ifndef SORT_EXPERIMENT_HPP
+#define SORT_EXPERIMENT_HPP
 
 #define NUMBER_DATA_ORDER 4
 #define NUMBER_SORT_ALGORITHM 12

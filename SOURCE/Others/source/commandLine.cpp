@@ -1,7 +1,4 @@
 #include "../header/commandLine.hpp"
-#include "../header/dataGenerator.hpp"
-#include "../header/helpFunctions.hpp"
-#include "../header/sortExperiment.hpp"
 
 void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv) {
     if (argc == 1) {
@@ -21,6 +18,12 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 
     if (experiment.is_algorithm_mode) {
         experiment.algorithm_id[0] = getAlgorithmID(argv[2]);
+
+        if (experiment.algorithm_id[0] == -1) {
+            std::cout << "Unknow or Invalid sort algorithm!\n";
+            return;
+        }
+        
         experiment.is_input_from_file = !isNumber(argv[3]);
 
         if (experiment.is_input_from_file) {
@@ -44,6 +47,12 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
     else {
         experiment.algorithm_id[0] = getAlgorithmID(argv[2]);
         experiment.algorithm_id[1] = getAlgorithmID(argv[3]);
+
+        if (experiment.algorithm_id[0] == -1 || experiment.algorithm_id[1] == -1) {
+            std::cout << "Unknow or Invalid sort algorithm!\n";
+            return;
+        }
+
         experiment.is_input_from_file = isNumber(argv[4]);
 
         if (experiment.is_input_from_file) {
@@ -72,6 +81,7 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
     experiment.file_name = argv[3];
             
     if (!readData(experiment.arr[0], argv[3])) {
+        std::cout << "Invalid reading data from file!\n";
         exit(true);
     }
 
@@ -85,18 +95,24 @@ void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
     char file_name[] = "input.txt";
 
     generateData(experiment.arr[0], experiment.input_size, experiment.data_order_id);
-    writeData(experiment.arr[0], file_name);
+    
+    if (!writeData(experiment.arr[0], file_name)) {
+        std::cout << "Invalid writing data to file " << file_name << '\n';
+    }
 }
 
 void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
     experiment.output_parameter = getOutputParameterID(argv[4]);
 
-    for (int i = 0; i < NUMBER_SORT_ALGORITHM; i++) {
+    for (int i = 0; i < NUMBER_DATA_ORDER; i++) {
         experiment.arr[i].resize(experiment.input_size);
         generateData(experiment.arr[i], experiment.input_size, i);
         char file_name[] = "input_0.txt";
         file_name[6] = i + 1 + '0';
-        writeData(experiment.arr[i], file_name);
+
+        if (!writeData(experiment.arr[i], file_name)) {
+            std::cout << "Invalid writing data to file " << file_name << '\n';
+        }
     }
 }
 
@@ -121,5 +137,8 @@ void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
     experiment.arr[0].resize(experiment.input_size);
     char file_name[] = "input.txt";
     generateData(experiment.arr[0], experiment.input_size, experiment.data_order_id);
-    writeData(experiment.arr[0], file_name);
+
+    if (!writeData(experiment.arr[0], file_name)) {
+        std::cout << "Invalid writing data to file " << file_name << '\n';
+    }
 }

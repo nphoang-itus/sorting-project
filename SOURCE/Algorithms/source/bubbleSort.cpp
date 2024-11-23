@@ -1,15 +1,15 @@
 #include "../header/bubbleSort.hpp"
-#include "../header/helpFunctions.hpp"
 
-void bubbleSort(int arr[], int n, long long &count_comparison) {
+template <class T>
+void bubbleSort(std::vector<T> &arr, long long &count_comparison) {
     count_comparison = 0;
     bool swapped = false;
 
     // loop through the array
-    for (int i = 0; ++count_comparison && (i < n - 1); i++) {
+    for (int i = 0; ++count_comparison && (i < arr.size() - 1); i++) {
         swapped = false;
         // Bring the largest element to the end
-        for (int j = 0; ++count_comparison && (j < n - i - 1); j++) {
+        for (int j = 0; ++count_comparison && (j < arr.size() - i - 1); j++) {
             if (++count_comparison && (arr[j] > arr[j + 1])) {
                 // swap(arr[j], arr[j + 1]);
                 swap(arr[j], arr[j + 1]);
@@ -23,17 +23,18 @@ void bubbleSort(int arr[], int n, long long &count_comparison) {
     }
 }
 
-void bubbleSort(int arr[], int n) {
+template <class T>
+void bubbleSort(std::vector<T> &arr) {
     bool swapped = false;
 
     // loop through the array
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < arr.size() - 1; i++) {
         swapped = false;
         // Bring the largest element to the end
-        for (int j = 0; j < n - i - 1; j++) {
+        for (int j = 0; j < arr.size() - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 // swap(arr[j], arr[j + 1]);
-                swap(arr[i], arr[j + 1]);
+                swap(arr[j], arr[j + 1]);
                 swapped = true;
             }
         }
@@ -43,3 +44,6 @@ void bubbleSort(int arr[], int n) {
             break;
     }
 }
+
+template void bubbleSort(std::vector<int> &arr, long long &count_comparison);
+template void bubbleSort(std::vector<int> &arr);

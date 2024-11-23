@@ -1,5 +1,4 @@
 #include "../header/sortExperiment.hpp"
-#include "../header/dataGenerator.hpp"
 
 SortExperiment::SortExperiment() {
     arr.resize(NUMBER_SORT_ALGORITHM);
@@ -70,23 +69,142 @@ void SortExperiment::printResult() {
 
     return;
 }
-
-void SortExperiment::runCompareMode() {
-
-}
         
 void SortExperiment::runAlgorithmMode() {
+    int loops = is_running_all ? NUMBER_DATA_ORDER : 1;
+    std::vector<int> temp;
 
+    for (int i = 0; i < loops; i++) {
+        if (output_parameter == 3) {
+            temp = arr[i];
+            sort(temp, algorithm_id[0], results[i].count_comparison);
+
+            temp = arr[i];
+            sort(temp, algorithm_id[0], results[i].running_time);
+        }
+
+        else if (output_parameter == 2) {
+            temp = arr[i];
+            sort(temp, algorithm_id[0], results[i].count_comparison);
+        }
+
+        else if (output_parameter == 1) {
+            temp = arr[i];
+            sort(temp, algorithm_id[0], results[i].running_time);
+        }
+
+        else {
+            std::cout << "Invalid output parameter\n";
+            break;
+        }
+    }
+
+    if (loops == 1) {
+        char filename[] = "output.txt";
+        writeData(temp, filename);
+    }
+}
+
+void SortExperiment::runCompareMode() {
+    std::vector<int> temp;
+
+    for (int i = 0; i < 2; i++) {
+        temp = arr[0];
+        sort(temp, algorithm_id[i], results[i].count_comparison);
+
+        temp = arr[0];
+        sort(temp, algorithm_id[i], results[i].running_time);
+    }
 }
 
 
 
 void sort(std::vector<int> &arr, int algorithm_id, long long &count_comparison) {
+    count_comparison = 0;
 
+    switch (algorithm_id) {
+        // case SELECTION_SORT:
+        //     selectionSort(arr, count_comparison);
+        //     break;
+        // case INSERTION_SORT:
+        //     insertionSort(arr, count_comparison);
+        //     break;
+        case BUBBLE_SORT:
+            bubbleSort(arr, count_comparison);
+            break;
+        // case SHAKER_SORT:
+        //     shakerSort(arr, count_comparison);
+        //     break;
+        // case SHELL_SORT:
+        //     shellSort(arr, count_comparison);
+        //     break;
+        // case HEAP_SORT:
+        //     heapSort(arr, count_comparison);
+        //     break;
+        // case MERGE_SORT:
+        //     mergeSort(arr, count_comparison);
+        //     break;
+        // case QUICK_SORT:
+        //     quickSort(arr, count_comparison);
+        //     break;
+        // case COUNTING_SORT:
+        //     countingSort(arr, count_comparison);
+        //     break;
+        // case RADIX_SORT:
+        //     radixSort(arr, count_comparison);
+        //     break;
+        // case FLASH_SORT:
+        //     flashSort(arr, count_comparison);
+        //     break;
+        default:
+            break;
+    }
 }
 
 void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double, std::milli> &running_time) {
+    const std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
 
+    switch (algorithm_id) {
+        // case SELECTION_SORT:
+        //     selectionSort(arr);
+        //     break;
+        // case INSERTION_SORT:
+        //     insertionSort(arr);
+        //     break;
+        case BUBBLE_SORT:
+            bubbleSort(arr);
+            break;
+        // case SHAKER_SORT:
+        //     shakerSort(arr);
+        //     break;
+        // case SHELL_SORT:
+        //     shellSort(arr);
+        //     break;
+        // case HEAP_SORT:
+        //     heapSort(arr);
+        //     break;
+        // case MERGE_SORT:
+        //     mergeSort(arr);
+        //     break;
+        // case QUICK_SORT:
+        //     quickSort(arr);
+        //     break;
+        // case COUNTING_SORT:
+        //     countingSort(arr);
+        //     break;
+        // case RADIX_SORT:
+        //     radixSort(arr);
+        //     break;
+        // case FLASH_SORT:
+        //     flashSort(arr);
+        //     break;
+        default:
+            break;
+    }
+
+    const std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+    const std::chrono::duration<double, std::milli> time_count = end - start;
+    running_time = time_count;
 }
 
 std::string getAlgorithmName(int algorithm_id) {

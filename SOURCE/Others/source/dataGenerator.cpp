@@ -1,5 +1,4 @@
 #include "../header/dataGenerator.hpp"
-#include "../header/helpFunctions.hpp"
 
 //-------------------------------------------------
 
@@ -68,6 +67,7 @@ void generateData(std::vector<int> &arr, int n, int dataType)
 		break;
 	default:
 		std::cout << "Error: unknown data type!\n";
+		break;
 	}
 }
 
