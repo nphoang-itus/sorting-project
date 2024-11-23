@@ -1,8 +1,11 @@
 #pragma once
+
+#include "../../Others/header/helpFunctions.hpp"
+
 #ifndef SHELL_SORT_HPP
 #define SHELL_SORT_HPP
 
-void shellSort(int array[], int n, long long &count_comparison);
-void shellSort(int array[], int n);
+template <class T> void shellSort(std::vector<T> &arr, size_t &count_comparison);
+template <class T> void shellSort(std::vector<T> &arr);
 
 #endif // SHELL_SORT_HPP
