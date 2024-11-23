@@ -1,11 +1,12 @@
 #include "../header/radixSort.hpp"
 
 template<class T>
-T getMax(std::vector<T>& array, int n, long long& count_comparison)
+T getMax(std::vector<T>& array, size_t& count_comparison)
 {
     //cài đặt lấy giá trị lớn nhất (hoặc số có nhiều chữ số nhất) của radixSort
     T mx = array[0];
-    for (int i = 1; ++count_comparison && i < n; i++)
+    size_t n = array.size();
+    for (size_t i = 1; ++count_comparison && i < n; i++)
     {
         if (++count_comparison && array[i] > mx)
         {
@@ -16,11 +17,13 @@ T getMax(std::vector<T>& array, int n, long long& count_comparison)
 }
 
 template<class T>
-void countSort(std::vector<T>& array, int n, int exp, long long& count_comparison)
+void countSort(std::vector<T>& array, size_t exp, size_t& count_comparison)
 {
     //cài đặt hàm sắp xếp theo từng cơ số của từng chữ số trong radixSort
+    size_t n = array.size();
     std::vector<T> output(n);                      //tạo một mảng tạm để lưu trữ sau khi sắp xếp theo cơ số
-    int i, cnt[10] = { 0 };                       //đếm số lần xuất hiện của từng chữ số trong cơ số 10
+    int i;
+    size_t cnt[10] = { 0 };                       //đếm số lần xuất hiện của từng chữ số trong cơ số 10
     for (i = 0; ++count_comparison && i < n; i++)
     {
         cnt[(array[i] / exp) % 10]++;
@@ -41,22 +44,23 @@ void countSort(std::vector<T>& array, int n, int exp, long long& count_compariso
 }
 
 template<class T>
-void radixSort(std::vector<T>& array, int n, long long &count_comparison) 
+void radixSort(std::vector<T>& array, size_t& count_comparison) 
 {
     //cài đặt radixSort
-    int soChuSo = getMax(array, n, count_comparison);
-    for (int exp = 1; ++count_comparison && soChuSo / exp > 0; exp *= 10)
+    size_t soChuSo = (size_t)getMax(array, count_comparison);
+    for (size_t exp = 1; ++count_comparison && soChuSo / exp > 0; exp *= 10)
     {
-        countSort(array, n, exp, count_comparison);                  //Thực hiện các chữ số từ phải cùng qua trái
+        countSort(array, exp, count_comparison);                  //Thực hiện các chữ số từ phải cùng qua trái
     }
 }
 
 template<class T>
-T getMax(std::vector<T>& array, int n)
+T getMax(std::vector<T>& array)
 {
     //cài đặt lấy giá trị lớn nhất (hoặc số có nhiều chữ số nhất) của radixSort
     T mx = array[0];
-    for (int i = 1; i < n; i++)
+    size_t n = array.size();
+    for (size_t i = 1; i < n; i++)
     {
         if (array[i] > mx)
         {
@@ -67,11 +71,13 @@ T getMax(std::vector<T>& array, int n)
 }
 
 template<class T>
-void countSort(std::vector<T>& array, int n, int exp)
+void countSort(std::vector<T>& array, size_t exp)
 {
     //cài đặt hàm sắp xếp theo từng cơ số của từng chữ số trong radixSort
+    size_t n = array.size();
     std::vector<T> output(n);                      //tạo một mảng tạm để lưu trữ sau khi sắp xếp theo cơ số
-    int i, cnt[10] = { 0 };                       //đếm số lần xuất hiện của từng chữ số trong cơ số 10
+    int i;
+    size_t cnt[10] = { 0 };                       //đếm số lần xuất hiện của từng chữ số trong cơ số 10
     for (i = 0; i < n; i++)
     {
         cnt[(array[i] / exp) % 10]++;
@@ -92,31 +98,31 @@ void countSort(std::vector<T>& array, int n, int exp)
 }
 
 template<class T>
-void radixSort(std::vector<T>& array, int n)
+void radixSort(std::vector<T>& array)
 {
     //cài đặt radixSort
-    int soChuSo = getMax(array, n);
-    for (int exp = 1; soChuSo / exp > 0; exp *= 10)
+    size_t soChuSo = (size_t)getMax(array);
+    for (size_t exp = 1; soChuSo / exp > 0; exp *= 10)
     {
-        countSort(array, n, exp);                  //Thực hiện các chữ số từ phải cùng qua trái
+        countSort(array, exp);                  //Thực hiện các chữ số từ phải cùng qua trái
     }
 }
 
 // INSTANTIATION
 //radixSort
-template int getMax(std::vector<int>&, int);
-template void countSort(std::vector<int>&, int, int);
-template void radixSort(std::vector<int>&, int);
+template int getMax(std::vector<int>&);
+template void countSort(std::vector<int>&, size_t);
+template void radixSort(std::vector<int>&);
 
-template long long getMax(std::vector<long long>&, int);
-template void countSort(std::vector<long long>&, int, int);
-template void radixSort(std::vector<long long>&, int);
+template long long getMax(std::vector<long long>&);
+template void countSort(std::vector<long long>&, size_t);
+template void radixSort(std::vector<long long>&);
 
 //radixSort with compare
-template int getMax(std::vector<int>&, int, long long&);
-template void countSort(std::vector<int>&, int, int, long long&);
-template void radixSort(std::vector<int>&, int, long long&);
+template int getMax(std::vector<int>&, size_t&);
+template void countSort(std::vector<int>&, size_t, size_t&);
+template void radixSort(std::vector<int>&, size_t&);
 
-template long long getMax(std::vector<long long>&, int, long long&);
-template void countSort(std::vector<long long>&, int, int, long long&);
-template void radixSort(std::vector<long long>&, int, long long&);
+template long long getMax(std::vector<long long>&, size_t&);
+template void countSort(std::vector<long long>&, size_t, size_t&);
+template void radixSort(std::vector<long long>&, size_t&);
