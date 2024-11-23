@@ -9,6 +9,6 @@ template<class T>
 void shakerSort(std::vector<T>& array);
 
 template<class T>
-void shakerSort(std::vector<T>& array, long long& count_comparison);
+void shakerSort(std::vector<T>& array, size_t& count_comparison);
 
 #endif // SHAKER_SORT_HPP
