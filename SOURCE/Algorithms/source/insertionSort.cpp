@@ -1,8 +1,8 @@
-#include "../header/helpFunctions.hpp"
+
 #include "../header/insertionSort.hpp"
 
 template <class T>
-void insertionSort(std::vector<T> &arr, long long &count_comparison) {
+void insertionSort(std::vector<T> &arr, size_t &count_comparison) {
     count_comparison = 0; // Initialize comparison counter
 
     for (size_t i = 1; i < arr.size(); ++i) {
@@ -39,14 +39,14 @@ void insertionSort(std::vector<T> &arr) {
 
 
 // INSTANTIATION
-//selectionSort with Compare
-template void insertionSort(std::vector<int>&, long long&);
-template void insertionSort(std::vector<long long>&, long long&);
-template void insertionSort(std::vector<float>&, long long&);
-template void insertionSort(std::vector<double>&, long long&);
-template void insertionSort(std::vector<char>&, long long&);
+//insertionSort with Compare
+template void insertionSort(std::vector<int>&, size_t&);
+template void insertionSort(std::vector<long long>&, size_t&);
+template void insertionSort(std::vector<float>&, size_t&);
+template void insertionSort(std::vector<double>&, size_t&);
+template void insertionSort(std::vector<char>&, size_t&);
 
-// selectionSort
+// insertionSort
 template void insertionSort(std::vector<int>&);
 template void insertionSort(std::vector<long long>&);
 template void insertionSort(std::vector<float>&);

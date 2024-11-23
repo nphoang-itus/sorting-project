@@ -1,4 +1,4 @@
-#include "../header/helpFunctions.hpp"
+
 #include "../header/shellSort.hpp"
 
 template <class T>
@@ -28,8 +28,7 @@ void shellSort(std::vector<T> &arr, size_t &count_comparison) {
 }
 
 template <class T>
-void shellSort(std::vector<T> &arr)
-{
+void shellSort(std::vector<T> &arr) {
     size_t n = arr.size();
 
     // Start with a large gap and reduce it
@@ -50,14 +49,14 @@ void shellSort(std::vector<T> &arr)
 }
 
 // INSTANTIATION
-//selectionSort with Compare
-template void shellSort(std::vector<int>&, long long&);
-template void shellSort(std::vector<long long>&, long long&);
-template void shellSort(std::vector<float>&, long long&);
-template void shellSort(std::vector<double>&, long long&);
-template void shellSort(std::vector<char>&, long long&);
+//shellSort with Compare
+template void shellSort(std::vector<int>&,  size_t&);
+template void shellSort(std::vector<long long>&, size_t&);
+template void shellSort(std::vector<float>&, size_t&);
+template void shellSort(std::vector<double>&, size_t&);
+template void shellSort(std::vector<char>&, size_t&);
 
-// selectionSort
+// shellSort
 template void shellSort(std::vector<int>&);
 template void shellSort(std::vector<long long>&);
 template void shellSort(std::vector<float>&);

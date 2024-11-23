@@ -1,8 +1,11 @@
 #pragma once
+
+#include "../../Others/header/helpFunctions.hpp"
+
 #ifndef FLASH_SORT_HPP
 #define FLASH_SORT_HPP
 
-void flashSort(int array[], int n, long long &count_comparison);
-void flashSort(int array[], int n);
+template <typename T> void flashSort(std::vector<T> &arr, size_t &count_comparison);
+template <typename T> void flashSort(std::vector<T> &arr);
 
 #endif // FLASH_SORT_HPP
