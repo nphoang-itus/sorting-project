@@ -1,4 +1,3 @@
-
 #include "../header/shellSort.hpp"
 
 template <class T>

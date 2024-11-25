@@ -31,6 +31,10 @@ void SortExperiment::printResult() {
 
         for (int i = 0; i < number_data_order; i++) {
             if (!is_input_from_file) {
+                if (is_running_all) {
+                    std::cout << '\n';
+                }
+        
                 std::cout << "Input order: " << getDataOrderName(i) << '\n';
             }
 
@@ -59,7 +63,7 @@ void SortExperiment::printResult() {
         std::cout << "Input size: " << input_size << '\n';
         
         if (!is_input_from_file) {
-            std::cout << "Input order: " << getDataOrderName(data_order_id) << '\n';
+            std::cout << "\nInput order: " << getDataOrderName(data_order_id) << '\n';
         }
 
         std::cout << "---------------------------------------------\n";
@@ -119,28 +123,28 @@ void SortExperiment::runCompareMode() {
 
 
 
-void sort(std::vector<int> &arr, int algorithm_id, long long &count_comparison) {
+void sort(std::vector<int> &arr, int algorithm_id, size_t &count_comparison) {
     count_comparison = 0;
 
     switch (algorithm_id) {
-        // case SELECTION_SORT:
-        //     selectionSort(arr, count_comparison);
-        //     break;
-        // case INSERTION_SORT:
-        //     insertionSort(arr, count_comparison);
-        //     break;
+        case SELECTION_SORT:
+            selectionSort(arr, count_comparison);
+            break;
+        case INSERTION_SORT:
+            insertionSort(arr, count_comparison);
+            break;
         case BUBBLE_SORT:
             bubbleSort(arr, count_comparison);
             break;
-        // case SHAKER_SORT:
-        //     shakerSort(arr, count_comparison);
-        //     break;
-        // case SHELL_SORT:
-        //     shellSort(arr, count_comparison);
-        //     break;
-        // case HEAP_SORT:
-        //     heapSort(arr, count_comparison);
-        //     break;
+        case SHAKER_SORT:
+            shakerSort(arr, count_comparison);
+            break;
+        case SHELL_SORT:
+            shellSort(arr, count_comparison);
+            break;
+        case HEAP_SORT:
+            heapSort(arr, count_comparison);
+            break;
         // case MERGE_SORT:
         //     mergeSort(arr, count_comparison);
         //     break;
@@ -150,12 +154,12 @@ void sort(std::vector<int> &arr, int algorithm_id, long long &count_comparison) 
         // case COUNTING_SORT:
         //     countingSort(arr, count_comparison);
         //     break;
-        // case RADIX_SORT:
-        //     radixSort(arr, count_comparison);
-        //     break;
-        // case FLASH_SORT:
-        //     flashSort(arr, count_comparison);
-        //     break;
+        case RADIX_SORT:
+            radixSort(arr, count_comparison);
+            break;
+        case FLASH_SORT:
+            flashSort(arr, count_comparison);
+            break;
         default:
             break;
     }
@@ -165,24 +169,24 @@ void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double,
     const std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
 
     switch (algorithm_id) {
-        // case SELECTION_SORT:
-        //     selectionSort(arr);
-        //     break;
-        // case INSERTION_SORT:
-        //     insertionSort(arr);
-        //     break;
+        case SELECTION_SORT:
+            selectionSort(arr);
+            break;
+        case INSERTION_SORT:
+            insertionSort(arr);
+            break;
         case BUBBLE_SORT:
             bubbleSort(arr);
             break;
-        // case SHAKER_SORT:
-        //     shakerSort(arr);
-        //     break;
-        // case SHELL_SORT:
-        //     shellSort(arr);
-        //     break;
-        // case HEAP_SORT:
-        //     heapSort(arr);
-        //     break;
+        case SHAKER_SORT:
+            shakerSort(arr);
+            break;
+        case SHELL_SORT:
+            shellSort(arr);
+            break;
+        case HEAP_SORT:
+            heapSort(arr);
+            break;
         // case MERGE_SORT:
         //     mergeSort(arr);
         //     break;
@@ -192,12 +196,12 @@ void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double,
         // case COUNTING_SORT:
         //     countingSort(arr);
         //     break;
-        // case RADIX_SORT:
-        //     radixSort(arr);
-        //     break;
-        // case FLASH_SORT:
-        //     flashSort(arr);
-        //     break;
+        case RADIX_SORT:
+            radixSort(arr);
+            break;
+        case FLASH_SORT:
+            flashSort(arr);
+            break;
         default:
             break;
     }

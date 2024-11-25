@@ -91,6 +91,14 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
 void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
     experiment.data_order_id = getDataOrderID(argv[4]);
     experiment.output_parameter = getOutputParameterID(argv[5]);
+
+    if (experiment.data_order_id == -1 || experiment.output_parameter == -1) {
+        std::cout << "Invalid data order or output parameter!\n";
+        std::cout << "Try: -rand, -sorted, -rev, -nsorted\n";
+        std::cout << "Try: -time, -comp, -both\n";
+        return;
+    }
+
     experiment.arr[0].resize(experiment.input_size);
     char file_name[] = "input.txt";
 
@@ -103,6 +111,12 @@ void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
 
 void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
     experiment.output_parameter = getOutputParameterID(argv[4]);
+
+    if (experiment.output_parameter == -1) {
+        std::cout << "Invalid output parameter!\n";
+        std::cout << "Try: -time, -comp, -both\n";
+        return;
+    }
 
     for (int i = 0; i < NUMBER_DATA_ORDER; i++) {
         experiment.arr[i].resize(experiment.input_size);

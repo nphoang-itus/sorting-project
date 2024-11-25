@@ -1,4 +1,4 @@
-#include "../Others/header/helpFunctions.hpp"
+#include "../../Others/header/helpFunctions.hpp"
 #include "../header/selectionSort.hpp"
 
 template <class T>
@@ -15,7 +15,7 @@ void selectionSort(std::vector<T>& array) {
 }
 
 template <class T>
-void selectionSort(std::vector<T> array, long long &countComparison) {
+void selectionSort(std::vector<T> array, size_t &countComparison) {
     countComparison = 0;
     for (size_t i = 0; ++countComparison && i < array.size() - 1; ++i) {
         size_t minIndex = i;
@@ -37,8 +37,8 @@ template void selectionSort(std::vector<double>&);
 template void selectionSort(std::vector<char>&);
 
 //selectionSort with Compare
-template void selectionSort(std::vector<int>, long long&);
-template void selectionSort(std::vector<long long>, long long&);
-template void selectionSort(std::vector<float>, long long&);
-template void selectionSort(std::vector<double>, long long&);
-template void selectionSort(std::vector<char>, long long&);
+template void selectionSort(std::vector<int>, size_t&);
+template void selectionSort(std::vector<long long>, size_t&);
+template void selectionSort(std::vector<float>, size_t&);
+template void selectionSort(std::vector<double>, size_t&);
+template void selectionSort(std::vector<char>, size_t&);

@@ -3,18 +3,18 @@
 #include "helpFunctions.hpp"
 #include "dataGenerator.hpp"
 
-// #include "../Algorithms/header/selectionSort.hpp"
+#include "../../Algorithms/header/selectionSort.hpp"
 // #include "../Algorithms/header/binaryInsertionSort.hpp"
-// #include "../Algorithms/header/insertionSort.hpp"
+#include "../../Algorithms/header/insertionSort.hpp"
 #include "../../Algorithms/header/bubbleSort.hpp"
-// #include "../Algorithms/header/shakerSort.hpp"
-// #include "../Algorithms/header/shellSort.hpp"
-// #include "../Algorithms/header/heapSort.hpp"
+#include "../../Algorithms/header/shakerSort.hpp"
+#include "../../Algorithms/header/shellSort.hpp"
+#include "../../Algorithms/header/heapSort.hpp"
 // #include "../Algorithms/header/mergeSort.hpp"
 // #include "../Algorithms/header/quickSort.hpp"
 // #include "../Algorithms/header/countingSort.hpp"
-// #include "../Algorithms/header/radixSort.hpp"
-// #include "../Algorithms/header/flashSort.hpp"
+#include "../../Algorithms/header/radixSort.hpp"
+#include "../../Algorithms/header/flashSort.hpp"
 
 #ifndef SORT_EXPERIMENT_HPP
 #define SORT_EXPERIMENT_HPP
@@ -37,7 +37,7 @@
 class ResultOfSorting {
     public:
         std::chrono::duration<double, std::milli> running_time;
-        long long count_comparison;
+        size_t count_comparison;
 };
 
 class SortExperiment {
@@ -60,7 +60,7 @@ class SortExperiment {
         void printResult();
 };
 
-void sort(std::vector<int> &arr, int algorithm_id, long long &count_comparison);
+void sort(std::vector<int> &arr, int algorithm_id, size_t &count_comparison);
 void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double, std::milli> &running_time);
 std::string getAlgorithmName(int algorithm_id);
 int getAlgorithmID(std::string sort_name);

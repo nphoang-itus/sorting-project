@@ -1,7 +1,7 @@
 #include "../header/bubbleSort.hpp"
 
 template <class T>
-void bubbleSort(std::vector<T> &arr, long long &count_comparison) {
+void bubbleSort(std::vector<T> &arr, size_t &count_comparison) {
     count_comparison = 0;
     bool swapped = false;
 
@@ -45,5 +45,14 @@ void bubbleSort(std::vector<T> &arr) {
     }
 }
 
-template void bubbleSort(std::vector<int> &arr, long long &count_comparison);
-template void bubbleSort(std::vector<int> &arr);
+template void bubbleSort(std::vector<int>&, size_t&);
+template void bubbleSort(std::vector<long long>&, size_t&);
+template void bubbleSort(std::vector<float>&, size_t&);
+template void bubbleSort(std::vector<double>&, size_t&);
+template void bubbleSort(std::vector<char>&, size_t&);
+
+template void bubbleSort(std::vector<int>&);
+template void bubbleSort(std::vector<long long>&);
+template void bubbleSort(std::vector<float>&);
+template void bubbleSort(std::vector<double>&);
+template void bubbleSort(std::vector<char>&);
