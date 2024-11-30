@@ -56,7 +56,7 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
             if (class_idx >= m) class_idx = m - 1; // Handle edge case
             pos = --l[class_idx];
             if (pos == current_class) break;
-            std::swap(temp, arr[pos]);
+            swap(temp, arr[pos]);
             ++num_moved;
             ++count_comparison; // Increment comparison counter
         }
