@@ -7,13 +7,13 @@
 #include "../../Others/header/helpFunctions.hpp"
 
 static const int MAX_VAL = 10000001;
-int cnt[MAX_VAL] = {0};
+extern int cnt[MAX_VAL];
 
 template <class T>
 void countingSort(std::vector<T> &array);
 
 template <class T>
-void countingSort(std::vector<T> &array, long long &count_comparison);
+void countingSort(std::vector<T> &array, size_t &count_comparison);
 
 
 #endif // COUNTING_SORT_HPP
