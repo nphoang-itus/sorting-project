@@ -53,7 +53,7 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
             return;
         }
 
-        experiment.is_input_from_file = isNumber(argv[4]);
+        experiment.is_input_from_file = !isNumber(argv[4]);
 
         if (experiment.is_input_from_file) {
             commandLine4(experiment, argc, argv);
@@ -137,6 +137,8 @@ void commandLine4(SortExperiment &experiment, int &argc, char **&argv) {
     if (!readData(experiment.arr[0], argv[4])) {
         exit(true);
     }
+    
+    experiment.input_size = experiment.arr[0].size();
 }
 
 void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
