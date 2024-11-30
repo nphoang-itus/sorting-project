@@ -1,9 +1,14 @@
 # Sorting-project
 Lab 03 project in DSA: Study algorithms related to sorting techniques.
 
-
-Compile: 
+(Open Terminal in sorting-project folder)\
+Compile for Windows: 
 
 ``` powershell
-g++ main.cpp Algorithms/source/*.cpp  Others/source/*.cpp -o main.exe
+g++ SOURCE/Algorithms/source/*.cpp  SOURCE/Others/source/*.cpp -o bin/main.exe
+```
+Compile for MacOS: 
+
+``` powershell
+g++ SOURCE/Algorithms/source/*.cpp  SOURCE/Others/source/*.cpp -o bin/main
 ```
