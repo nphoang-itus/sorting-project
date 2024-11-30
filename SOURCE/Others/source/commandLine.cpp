@@ -88,6 +88,7 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
         exit(true);
     }
 
+    experiment.input_size = experiment.arr[0].size();
     experiment.output_parameter = getOutputParameterID(argv[4]);
 }
 
