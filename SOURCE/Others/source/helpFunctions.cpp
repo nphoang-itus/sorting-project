@@ -104,8 +104,6 @@ int getOutputParameterID(char *param_flag) {
 
 bool isOutputParameterID(char *param_flag) {
     if (getOutputParameterID(param_flag) == -1) {
-        std::cout << "Invalid output parameter!\n";
-        exit(true);
         return false;
     }
     return true;
