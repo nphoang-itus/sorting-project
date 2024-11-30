@@ -53,7 +53,7 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
             return;
         }
 
-        experiment.is_input_from_file = isNumber(argv[4]);
+        experiment.is_input_from_file = !isNumber(argv[4]);
 
         if (experiment.is_input_from_file) {
             commandLine4(experiment, argc, argv);
@@ -97,7 +97,7 @@ void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
         std::cout << "Invalid data order or output parameter!\n";
         std::cout << "Try: -rand, -sorted, -rev, -nsorted\n";
         std::cout << "Try: -time, -comp, -both\n";
-        return;
+        exit(true);
     }
 
     experiment.arr[0].resize(experiment.input_size);
@@ -116,7 +116,7 @@ void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
     if (experiment.output_parameter == -1) {
         std::cout << "Invalid output parameter!\n";
         std::cout << "Try: -time, -comp, -both\n";
-        return;
+        exit(true);
     }
 
     for (int i = 0; i < NUMBER_DATA_ORDER; i++) {
@@ -137,6 +137,8 @@ void commandLine4(SortExperiment &experiment, int &argc, char **&argv) {
     if (!readData(experiment.arr[0], argv[4])) {
         exit(true);
     }
+    
+    experiment.input_size = experiment.arr[0].size();
 }
 
 void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
