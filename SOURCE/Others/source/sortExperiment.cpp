@@ -68,7 +68,7 @@ void SortExperiment::printResult() {
 
         std::cout << "---------------------------------------------\n";
         std::cout << "Running time: " << results[0].running_time.count() << " | " << results[1].running_time.count() << '\n';
-        std::cout << "Comparisons: " << results[0].count_comparison << " | " << results[0].count_comparison << '\n';
+        std::cout << "Comparisons: " << results[0].count_comparison << " | " << results[1].count_comparison << '\n';
     }
 
     return;
