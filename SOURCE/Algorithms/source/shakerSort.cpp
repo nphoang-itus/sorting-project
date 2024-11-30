@@ -8,10 +8,12 @@ void shakerSort(std::vector<T>& array, size_t& count_comparison)
     int End = array.size() - 1;                        //biến giữ vị trí biên phải
     while (++count_comparison && start <= End)                     //Tương tự với Bubble Sort nhưng chạy từ cả 2 phía chưa được sắp xếp
     {
+        bool swapped = false;
         for (size_t i = start; ++count_comparison && i < End; i++)    //Chạy từ bên trái đẩy phần tử lớn nhất lên trên cùng của vị trí chưa được sắp xếp
         {
             if (++count_comparison && array[i] > array[i + 1])
             {
+                swapped = true;
                 swap<T>(array[i], array[i + 1]);
             }
         }
@@ -20,8 +22,13 @@ void shakerSort(std::vector<T>& array, size_t& count_comparison)
         {
             if (++count_comparison && array[i] > array[i + 1])
             {
+                swapped = true;
                 swap<T>(array[i], array[i + 1]);
             }
+        }
+        if (++count_comparison && !swapped)
+        {
+            break;
         }
         start++;
     }
@@ -34,10 +41,12 @@ void shakerSort(std::vector<T>& array) {
     int End = array.size() - 1;                        //Biến giữ vị trí biên phải
     while (start <= End)                     //Tương tự với Bubble Sort nhưng chạy từ cả 2 phía chưa được sắp xếp
     {
+        bool swapped = false;
         for (size_t i = start; i < End; i++)    //Chạy từ bên trái đẩy phần tử lớn nhất lên trên cùng của vị trí chưa được sắp xếp
         {
             if (array[i] > array[i + 1])
             {
+                swapped = true;
                 swap<T>(array[i], array[i + 1]);
             }
         }
@@ -46,8 +55,13 @@ void shakerSort(std::vector<T>& array) {
         {
             if (array[i] > array[i + 1])
             {
+                swapped = true;
                 swap<T>(array[i], array[i + 1]);
             }
+        }
+        if (!swapped) 
+        {
+            break;
         }
         start++;
     }
