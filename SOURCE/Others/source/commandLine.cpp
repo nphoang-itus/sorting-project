@@ -2,8 +2,12 @@
 
 void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv) {
     if (argc == 1) {
-        return;
+        std::cout << "Usage: ./program_name [-a | -c] <parameters>\n";
+        std::cout << "   -a: Algorithm mode\n";
+        std::cout << "   -c: Compare mode\n";
+        exit(EXIT_FAILURE);
     }
+
 
     else if (!strcmp(argv[1], "-a")) {
         experiment.is_algorithm_mode = true;
@@ -74,7 +78,6 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 
     experiment.printResult();
     return;
-    
 }
 
 void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {

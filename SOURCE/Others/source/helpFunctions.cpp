@@ -7,7 +7,7 @@ void swap(T &a, T &b) {
 	b = temp;
 }
 
-int max(int array[], int n, long long &count_comparison) {
+int max(int array[], int n, size_t &count_comparison) {
 	int max_idx = 0;
 
 	for (int i = 1; ++count_comparison && (i < n); i++)
@@ -17,7 +17,7 @@ int max(int array[], int n, long long &count_comparison) {
 	return array[max_idx];
 }
 
-int max(int a, int b, long long &count_comparison) {
+int max(int a, int b, size_t &count_comparison) {
 	count_comparison++;
 
 	return (a > b) ? a : b;
@@ -43,7 +43,9 @@ int random(int l, int r) {
 	
 	return 1ll * ran % (r - l + 1) + l;
 }
-bool readData(std::vector<int> &arr, char *fileName) {
+bool readData(std::vector<int> &arr, std::string fileName) {
+    fileName = "../sorting-project/SOURCE/Others/resource/" + fileName;
+
     if (!arr.empty()) {
         arr.clear();
     }
@@ -67,13 +69,9 @@ bool readData(std::vector<int> &arr, char *fileName) {
     return true;
 }
 
-bool writeData(std::vector<int> &arr, char *fileName) {
+bool writeData(std::vector<int> &arr, std::string fileName) {
+    fileName = "../sorting-project/SOURCE/Others/resource/" + fileName;
     std::fstream fout(fileName, std::ios::out);
-
-    if (!fout) {
-        std::cout << "Error: File not found\n";
-        return false;
-    }
 
 	int size = arr.size();
 	fout << size << '\n';
