@@ -148,7 +148,7 @@ void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
     if (experiment.data_order_id == -1) {
         std::cout << "Invalid data order syntax!\n";
         std::cout << "Try: -rand, -sorted, -rev, -nsorted\n";
-        return;
+        exit(true);
     }
 
     experiment.arr[0].resize(experiment.input_size);

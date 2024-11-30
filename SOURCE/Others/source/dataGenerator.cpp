@@ -57,13 +57,13 @@ void generateData(std::vector<int> &arr, int n, int dataType)
 		generateRandomData(arr, n);
 		break;
 	case 1:	
-		generateSortedData(arr, n);
+		generateNearlySortedData(arr, n);
 		break;
 	case 2:	
-		generateReverseData(arr, n);
+		generateSortedData(arr, n);
 		break;
 	case 3:	
-		generateNearlySortedData(arr, n);
+		generateReverseData(arr, n);
 		break;
 	default:
 		std::cout << "Error: unknown data type!\n";
