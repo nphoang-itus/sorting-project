@@ -10,7 +10,7 @@
 #include "../../Algorithms/header/shakerSort.hpp"
 #include "../../Algorithms/header/shellSort.hpp"
 #include "../../Algorithms/header/heapSort.hpp"
-// #include "../Algorithms/header/mergeSort.hpp"
+#include "../../Algorithms/header/mergeSort.hpp"
 // #include "../Algorithms/header/quickSort.hpp"
 // #include "../Algorithms/header/countingSort.hpp"
 #include "../../Algorithms/header/radixSort.hpp"
