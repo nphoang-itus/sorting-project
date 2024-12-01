@@ -151,9 +151,9 @@ void sort(std::vector<int> &arr, int algorithm_id, size_t &count_comparison) {
         // case QUICK_SORT:
         //     quickSort(arr, count_comparison);
         //     break;
-        // case COUNTING_SORT:
-        //     countingSort(arr, count_comparison);
-        //     break;
+        case COUNTING_SORT:
+            countingSort(arr, count_comparison);
+            break;
         case RADIX_SORT:
             radixSort(arr, count_comparison);
             break;
@@ -196,9 +196,9 @@ void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double,
         // case QUICK_SORT:
         //     quickSort(arr);
         //     break;
-        // case COUNTING_SORT:
-        //     countingSort(arr);
-        //     break;
+        case COUNTING_SORT:
+            countingSort(arr);
+            break;
         case RADIX_SORT:
             radixSort(arr);
             break;
