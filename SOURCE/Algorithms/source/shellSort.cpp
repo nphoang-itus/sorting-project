@@ -6,20 +6,16 @@ void shellSort(std::vector<T> &arr, size_t &count_comparison) {
     size_t n = arr.size();
     
     // Start with a large gap and reduce it
-    for (size_t gap = n / 2; gap > 0; gap /= 2) {
+    for (size_t gap = n / 2; ++count_comparison && gap > 0; gap /= 2) {
         // Perform a gapped insertion sort
-        for (size_t i = gap; i < n; ++i) {
+        for (size_t i = gap; ++count_comparison && i < n; ++i) {
             T temp = arr[i];
             size_t j = i;
 
             // Shift earlier gap-sorted elements up until the correct location is found
-            while (j >= gap && arr[j - gap] > temp) {
-                ++count_comparison; // Increment comparison counter
+            while (++count_comparison && j >= gap && ++count_comparison && arr[j - gap] > temp) {
                 arr[j] = arr[j - gap];
                 j -= gap;
-            }
-            if (j >= gap) {
-                ++count_comparison; // Increment for the final check
             }
             arr[j] = temp;
         }
