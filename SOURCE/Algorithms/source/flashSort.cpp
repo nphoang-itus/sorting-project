@@ -3,7 +3,6 @@
 
 template <class T>
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {
-    count_comparison = 0; // Initialize comparison counter
     size_t n = arr.size();
 
     if (n <= 1) return; // Array is already sorted if it has 1 or no elements
@@ -57,7 +56,7 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
             if (class_idx >= m) class_idx = m - 1; // Handle edge case
             pos = --l[class_idx];
             if (pos == current_class) break;
-            std::swap(temp, arr[pos]);
+            swap(temp, arr[pos]);
             ++num_moved;
             ++count_comparison; // Increment comparison counter
         }

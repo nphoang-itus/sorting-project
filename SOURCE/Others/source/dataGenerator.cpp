@@ -76,11 +76,11 @@ std::string getDataOrderName(int data_order_id) {
         case 0:
             return "Randomized data";
         case 1:
-            return "Sorted data";
-        case 2:
-            return "Reverse sorted data";
-        case 3:
             return "Nearly sorted data";
+        case 2:
+            return "Sorted data";
+        case 3:
+            return "Reverse sorted data";
         default:
             return "Unknown data order";
     }
