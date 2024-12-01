@@ -1,8 +1,14 @@
 #pragma once
+
+#include "../../Others/header/helpFunctions.hpp"
+
 #ifndef COUNTING_SORT_HPP
 #define COUNTING_SORT_HPP
 
-void countingSort(int array[], int n, long long &count_comparison);
-void countingSort(int array[], int n);
+template<class T>
+void countingSort(std::vector<T>& array, size_t& count_comparison);
+
+template<class T>
+void countingSort(std::vector<T>& array);
 
 #endif // COUNTING_SORT_HPP
