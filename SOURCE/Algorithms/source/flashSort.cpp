@@ -1,164 +1,149 @@
 
 #include "../header/flashSort.hpp"
-#include <algorithm>
-
-template <class T>
-void flashSort(std::vector<T> &arr) {
-    // Handle small or empty arrays
-    if (arr.size() <= 1) return;
-
-    // Determine the number of partitions (classes)
-    size_t m = static_cast<size_t>(0.45 * arr.size());
-    if (m <= 1) m = 2;
-
-    // Find minimum and maximum values
-    T min = arr[0];
-    T max = arr[0];
-    for (size_t i = 1; i < arr.size(); ++i) {
-        if (arr[i] < min) min = arr[i];
-        if (arr[i] > max) max = arr[i];
-    }
-
-    // Handle case where all elements are the same
-    if (min == max) return;
-
-    // Compute normalization and bucket sizing
-    double coefficient = (m - 1.0) / (max - min);
-
-    // Create and initialize class size array
-    std::vector<size_t> L(m, 0);
-
-    // Count elements in each class
-    for (size_t i = 0; i < arr.size(); ++i) {
-        size_t k = static_cast<size_t>(((arr[i] - min) * coefficient));
-        L[k]++;
-    }
-
-    // Compute cumulative count
-    for (size_t i = 1; i < m; ++i) {
-        L[i] += L[i-1];
-    }
-
-    // Permutation step
-    std::vector<T> tmp(arr.size());
-    for (size_t i = 0; i < arr.size(); ++i) {
-        size_t k = static_cast<size_t>(((arr[i] - min) * coefficient));
-        tmp[--L[k]] = arr[i];
-    }
-
-    // Copy back to original array
-    arr = tmp;
-
-    // Insertion sort for each class with additional check
-    size_t start = 0;
-    for (size_t i = 0; i < m; ++i) {
-        size_t end = (i == m - 1) ? arr.size() : L[i+1];
-        
-        // Use insertion sort for small subarrays
-        for (size_t j = start + 1; j < end; ++j) {
-            T key = arr[j];
-            size_t k = j - 1;
-            
-            // Ensure complete sorting within each class
-            while (k >= start && arr[k] > key) {
-                arr[k + 1] = arr[k];
-                if (k == 0) break;
-                k--;
-            }
-            
-            arr[k + 1] = key;
-        }
-        
-        start = end;
-    }
-
-    // Final pass to ensure complete sorting
-    std::sort(arr.begin(), arr.end());
-}
 
 template <class T>
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {
-    count_comparison = 0;
-    
-    // Handle small or empty arrays
-    if (arr.size() <= 1) return;
+    size_t n = arr.size();
 
-    // Determine the number of partitions (classes)
-    size_t m = static_cast<size_t>(0.45 * arr.size());
-    if (m <= 1) m = 2;
+    if (n <= 1) return; // Array is already sorted if it has 1 or no elements
 
-    // Find minimum and maximum values
-    T min = arr[0];
-    T max = arr[0];
-    for (size_t i = 1; i < arr.size(); ++i) {
-        count_comparison++;
-        if (arr[i] < min) {
-            min = arr[i];
-        }
-        count_comparison++;
-        if (arr[i] > max) {
-            max = arr[i];
+    // Find the minimum and maximum elements in the array
+    T min_val = arr[0], max_val = arr[0];
+    size_t max_idx = 0;
+    for (size_t i = 1; i < n; ++i) {
+        ++count_comparison; // Increment comparison counter
+        if (arr[i] < min_val) {
+            min_val = arr[i];
+        } else if (arr[i] > max_val) {
+            max_val = arr[i];
+            max_idx = i;
         }
     }
 
-    // Handle case where all elements are the same
-    if (min == max) return;
+    // Calculate the number of classes (bins) and handle edge case
+    if (max_val == min_val) return; // All elements are equal, no sorting needed
+    size_t m = n / 2; // Number of classes (can be adjusted)
+    std::vector<size_t> l(m, 0); // Classification array
 
-    // Compute normalization and bucket sizing
-    double coefficient = (m - 1.0) / (max - min);
+    // Compute scaling factor
+    double scaling_factor = static_cast<double>(m - 1) / (max_val - min_val);
 
-    // Create and initialize class size array
-    std::vector<size_t> L(m, 0);
-
-    // Count elements in each class
-    for (size_t i = 0; i < arr.size(); ++i) {
-        count_comparison++;
-        size_t k = static_cast<size_t>(((arr[i] - min) * coefficient));
-        L[k]++;
+    // Classify elements into classes
+    for (size_t i = 0; i < n; ++i) {
+        size_t class_idx = static_cast<size_t>(scaling_factor * (arr[i] - min_val));
+        ++l[class_idx];
     }
 
-    // Compute cumulative count
+    // Accumulate class counts to determine class boundaries
     for (size_t i = 1; i < m; ++i) {
-        L[i] += L[i-1];
+        l[i] += l[i - 1];
     }
 
-    // Permutation step
-    std::vector<T> tmp(arr.size());
-    for (size_t i = 0; i < arr.size(); ++i) {
-        count_comparison++;
-        size_t k = static_cast<size_t>(((arr[i] - min) * coefficient));
-        tmp[--L[k]] = arr[i];
-    }
-
-    // Copy back to original array
-    arr = tmp;
-
-    // Insertion sort for each class
-    size_t start = 0;
-    for (size_t i = 0; i < m; ++i) {
-        size_t end = (i == m - 1) ? arr.size() : L[i+1];
-        
-        // Use insertion sort for small subarrays
-        for (size_t j = start + 1; j < end; ++j) {
-            count_comparison++;
-            T key = arr[j];
-            size_t k = j - 1;
-            
-            while (k >= start && arr[k] > key) {
-                count_comparison++;
-                arr[k + 1] = arr[k];
-                if (k == 0) break;
-                k--;
-            }
-            
-            arr[k + 1] = key;
+    // Perform the flash sorting
+    size_t num_moved = 0;
+    size_t current_class = 0;
+    while (num_moved < n - 1) {
+        while (current_class >= l[current_class]) {
+            ++current_class; // Move to the next class
         }
-        
-        start = end;
+
+        size_t pos = l[current_class] - 1;
+        T temp = arr[pos];
+        arr[pos] = arr[current_class];
+
+        while (true) {
+            size_t class_idx = static_cast<size_t>(scaling_factor * (temp - min_val));
+            if (class_idx >= m) class_idx = m - 1; // Handle edge case
+            pos = --l[class_idx];
+            if (pos == current_class) break;
+            swap(temp, arr[pos]);
+            ++num_moved;
+            ++count_comparison; // Increment comparison counter
+        }
     }
 
-    // Final pass to ensure complete sorting
-    std::sort(arr.begin(), arr.end());
+    // Final sorting within each class using insertion sort logic
+    for (size_t i = 1; i < n; ++i) {
+        T key = arr[i];
+        size_t j = i;
+        while (j > 0 && arr[j - 1] > key) {
+            ++count_comparison;
+            arr[j] = arr[j - 1];
+            --j;
+        }
+        if (j > 0) ++count_comparison;
+        arr[j] = key;
+    }
+}
+
+template <class T>
+void flashSort(std::vector<T> &arr) {
+    size_t n = arr.size();
+
+    if (n <= 1) return; // Array is already sorted if it has 1 or no elements
+
+    // Find the minimum and maximum elements in the array
+    T min_val = arr[0], max_val = arr[0];
+    size_t max_idx = 0;
+    for (size_t i = 1; i < n; ++i) {
+        if (arr[i] < min_val) {
+            min_val = arr[i];
+        } else if (arr[i] > max_val) {
+            max_val = arr[i];
+            max_idx = i;
+        }
+    }
+
+    // Calculate the number of classes (bins)
+    if (max_val == min_val) return; // All elements are equal, no sorting needed
+    size_t m = n / 2; // Number of classes (can be adjusted)
+    std::vector<size_t> l(m, 0); // Classification array
+
+    // Compute scaling factor
+    double scaling_factor = static_cast<double>(m - 1) / (max_val - min_val);
+
+    // Classify elements into classes
+    for (size_t i = 0; i < n; ++i) {
+        size_t class_idx = static_cast<size_t>(scaling_factor * (arr[i] - min_val));
+        ++l[class_idx];
+    }
+
+    // Accumulate class counts to determine class boundaries
+    for (size_t i = 1; i < m; ++i) {
+        l[i] += l[i - 1];
+    }
+
+    // Perform the flash sorting
+    size_t num_moved = 0;
+    size_t current_class = 0;
+    while (num_moved < n - 1) {
+        while (current_class >= l[current_class]) {
+            ++current_class; // Move to the next class
+        }
+
+        size_t pos = l[current_class] - 1;
+        T temp = arr[pos];
+        arr[pos] = arr[current_class];
+
+        while (true) {
+            size_t class_idx = static_cast<size_t>(scaling_factor * (temp - min_val));
+            pos = --l[class_idx];
+            if (pos == current_class) break;
+            std::swap(temp, arr[pos]);
+            ++num_moved;
+        }
+    }
+
+    // Final sorting within each class
+    for (size_t i = 1; i < n; ++i) {
+        T key = arr[i];
+        size_t j = i;
+        while (j > 0 && arr[j - 1] > key) {
+            arr[j] = arr[j - 1];
+            --j;
+        }
+        arr[j] = key;
+    }
 }
 
 // INSTANTIATION
@@ -175,4 +160,3 @@ template void flashSort(std::vector<long long>&);
 template void flashSort(std::vector<float>&);
 template void flashSort(std::vector<double>&);
 template void flashSort(std::vector<char>&);
-
