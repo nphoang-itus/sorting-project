@@ -28,7 +28,7 @@ void heapSort(std::vector<T>& array, size_t& count_comparison)
     int n = array.size();
     for (int i = n / 2 - 1; ++count_comparison && i >= 0; i--)                //bắt đầu từ n / 2 - 1 vì đó là phần tử cuối cùng có con
     {
-        heapify(array, n, i);                             //Xây dựng max heap
+        heapify(array, n, i, count_comparison);                             //Xây dựng max heap
     }
     for (int i = n - 1; ++count_comparison && i > 0; i--)
     {
