@@ -48,7 +48,7 @@ void countingSort(std::vector<T>& array, size_t& count_comparison)
     {
         frequency[array[i]]++;
     }
-    for (size_t i = 1; i <= Max; i++)
+    for (size_t i = 1; ++count_comparison && i <= Max; i++)
     {
         frequency[i] += frequency[i - 1];
     }
