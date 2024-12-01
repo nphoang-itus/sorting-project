@@ -54,7 +54,7 @@ void impleMergeSort(std::vector<T>& array, size_t left, size_t right, size_t& co
     size_t mid = (left + right) >> 1;
     impleMergeSort(array, left, mid, count_comparison);
     impleMergeSort(array, mid + 1, right, count_comparison);
-    Merge(array, left, mid, right);
+    Merge(array, left, mid, right, count_comparison);
 }
 
 template<class T>
