@@ -17,7 +17,7 @@ void heapify(std::vector<T>& array, size_t n, size_t i, size_t& count_comparison
     if (++count_comparison && largest != i)                                   //nếu node cha không phải lớn nhất thì đổi chỗ sao cho node cha lớn nhất
     {
         swap(array[i], array[largest]);
-        heapify(array, n, largest);                       //đệ quy xuống node con ở dưới để node con ở dưới lớn nhất
+        heapify(array, n, largest, count_comparison);                       //đệ quy xuống node con ở dưới để node con ở dưới lớn nhất
     }
 }
 
@@ -33,7 +33,7 @@ void heapSort(std::vector<T>& array, size_t& count_comparison)
     for (int i = n - 1; ++count_comparison && i > 0; i--)
     {
         swap(array[0], array[i]);                           //đổi chỗ phần tử lớn nhất với phần tử phải cùng mà chưa được sắp xếp
-        heapify(array, i, 0);                             //heapify tiếp mảng với số phần tử còn lại bắt đầu từ gốc
+        heapify(array, i, 0, count_comparison);                             //heapify tiếp mảng với số phần tử còn lại bắt đầu từ gốc
     }
 }
 
