@@ -4,7 +4,7 @@
 #include "dataGenerator.hpp"
 
 #include "../../Algorithms/header/selectionSort.hpp"
-// #include "../Algorithms/header/binaryInsertionSort.hpp"
+#include "../../Algorithms/header/binaryInsertionSort.hpp"
 #include "../../Algorithms/header/insertionSort.hpp"
 #include "../../Algorithms/header/bubbleSort.hpp"
 #include "../../Algorithms/header/shakerSort.hpp"
