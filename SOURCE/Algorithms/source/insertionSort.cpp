@@ -10,7 +10,7 @@ void insertionSort(std::vector<T> &arr, size_t &count_comparison) {
         size_t j = i;
 
         // Shift elements of arr[0..i-1] that are greater than key
-        while (++count_comparison && j > 0 && arr[j - 1] > key) {
+        while (++count_comparison && j > 0 && ++count_comparison && arr[j - 1] > key) {
             arr[j] = arr[j - 1];
             --j;
         }
