@@ -160,6 +160,9 @@ void sort(std::vector<int> &arr, int algorithm_id, size_t &count_comparison) {
         case FLASH_SORT:
             flashSort(arr, count_comparison);
             break;
+        case BINARY_INSERTION_SORT:
+            binaryInsertionSort(arr, count_comparison);
+            break;
         default:
             break;
     }
@@ -201,6 +204,9 @@ void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double,
             break;
         case FLASH_SORT:
             flashSort(arr);
+            break;
+        case BINARY_INSERTION_SORT:
+            binaryInsertionSort(arr);
             break;
         default:
             break;
