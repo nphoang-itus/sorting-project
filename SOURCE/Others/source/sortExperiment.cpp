@@ -145,9 +145,9 @@ void sort(std::vector<int> &arr, int algorithm_id, size_t &count_comparison) {
         case HEAP_SORT:
             heapSort(arr, count_comparison);
             break;
-        // case MERGE_SORT:
-        //     mergeSort(arr, count_comparison);
-        //     break;
+        case MERGE_SORT:
+             mergeSort(arr, count_comparison);
+             break;
         // case QUICK_SORT:
         //     quickSort(arr, count_comparison);
         //     break;
@@ -187,9 +187,9 @@ void sort(std::vector<int> &arr, int algorithm_id, std::chrono::duration<double,
         case HEAP_SORT:
             heapSort(arr);
             break;
-        // case MERGE_SORT:
-        //     mergeSort(arr);
-        //     break;
+        case MERGE_SORT:
+            mergeSort(arr);
+            break;
         // case QUICK_SORT:
         //     quickSort(arr);
         //     break;
