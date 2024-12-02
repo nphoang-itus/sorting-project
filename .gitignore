@@ -1,5 +1,9 @@
 .vscode/
 bin/main.exe
 bin/main2.exe
-data.csv
 Randomized data.csv
+Randomized data.xls
+Nearly sorted data.csv
+Nearly sorted data.xls
+Reverse sorted data.csv
+Sorted data.csv

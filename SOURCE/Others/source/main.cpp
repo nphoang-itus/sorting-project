@@ -1,10 +1,18 @@
 #include "../header/commandLine.hpp"
 
+#define EXPERIMENT
+
 void overview() { // This function is for testing the algorithms with different data sizes and data orders
-    int DATA_SIZE_TESTS[6] = {10000, 30000, 50000, 100000, 300000, 500000};
+    int data_test[6] = {10000, 30000, 50000, 100000, 300000, 500000};
     std::vector<int> arr;
 
-    for (int dataOrderCode = 0; dataOrderCode < 1; dataOrderCode++) {
+    #ifdef EXPERIMENT
+        for (int i = 0; i < 6; i++) {
+            data_test[i] /= 1000;
+        }
+    #endif
+
+    for (int dataOrderCode = 0; dataOrderCode < NUMBER_DATA_ORDER; dataOrderCode++) {
         std::string fileName = getDataOrderName(dataOrderCode) + ".csv";
         std::ofstream out(fileName);
 
@@ -14,8 +22,8 @@ void overview() { // This function is for testing the algorithms with different 
         std::cout << "Data order: " << getDataOrderName(dataOrderCode) << '\n';
         std::cout << "Data size";
         for (int size_idx = 0; size_idx < 6; size_idx++) {
-            out << "," << DATA_SIZE_TESTS[size_idx] << ",,";
-            std::cout << "," << DATA_SIZE_TESTS[size_idx] << ",,";
+            out << ", " << data_test[size_idx] << ", ";
+            std::cout << ", " << data_test[size_idx] << ", ";
         }
         out << "\nResulting statics";
         std::cout << "\nResulting statics";
@@ -23,14 +31,14 @@ void overview() { // This function is for testing the algorithms with different 
             out << ", Running time, Comparison";
             std::cout << ", Running time, Comparison";
         }
-        out << "\n";
-        std::cout << "\n";
+        out << '\n';
+        std::cout << '\n';
 
         for (int algorithmID = 0; algorithmID < NUMBER_SORT_ALGORITHM; algorithmID++) {
             out << getAlgorithmName(algorithmID);
             std::cout << getAlgorithmName(algorithmID);
             for (int size_idx = 0; size_idx < 6; size_idx++) {
-                int data_size = DATA_SIZE_TESTS[size_idx];
+                int data_size = data_test[size_idx];
                 arr.resize(data_size);
                 generateData(arr, data_size, dataOrderCode);
 
@@ -54,10 +62,13 @@ void overview() { // This function is for testing the algorithms with different 
 }
 
 int main(int argc, char **argv) {
-    SortExperiment experiment;
+    if (argc == 2 && !strcmp(argv[1], "-experiment")) {
+        overview();
+        return 0;
+    }
 
+    SortExperiment experiment;
     executeWithCommandLine(experiment, argc, argv);
-    // overview();
 
     return 0;
 }
