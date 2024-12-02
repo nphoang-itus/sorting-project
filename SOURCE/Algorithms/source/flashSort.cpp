@@ -1,162 +1,132 @@
-
 #include "../header/flashSort.hpp"
 
-template <class T>
+template <typename T> 
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {
-    size_t n = arr.size();
+    // step 0: find min and max
+	int min_arr = arr[0], max_arr = arr[0];
+	for (int i = 1; ++count_comparison && (i < arr.size()); i++) {
+		if ( ++count_comparison && (arr[i] < min_arr)) {
+			min_arr = arr[i];
+		}
+		else if ( ++count_comparison && (arr[i] > max_arr)) {
+			max_arr = arr[i];
+		}
+	}
 
-    if (n <= 1) return; // Array is already sorted if it has 1 or no elements
+	if ( ++count_comparison && (max_arr == min_arr))
+		return;
 
-    // Find the minimum and maximum elements in the array
-    T min_val = arr[0], max_val = arr[0];
-    size_t max_idx = 0;
-    for (size_t i = 1; i < n; ++i) {
-        ++count_comparison; // Increment comparison counter
-        if (arr[i] < min_val) {
-            min_val = arr[i];
-        } else if (arr[i] > max_val) {
-            max_val = arr[i];
-            max_idx = i;
-        }
-    }
+	int m = arr.size() * 0.45; // 0.45 * n will be wrong
+	if (++count_comparison && (m <= 2)) m = 2;
+	
+	std::vector<int> L(m, 0);
 
-    // Calculate the number of classes (bins) and handle edge case
-    if (max_val == min_val) return; // All elements are equal, no sorting needed
-    size_t m = n / 2; // Number of classes (can be adjusted)
-    std::vector<size_t> l(m, 0); // Classification array
+	for (int i = 0;  ++count_comparison && (i < arr.size()); i++) {
+		int k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
+		L[k]++;
+	}
 
-    // Compute scaling factor
-    double scaling_factor = static_cast<double>(m - 1) / (max_val - min_val);
+	for (int k = 1; ++count_comparison && (k < m); k++) L[k] += L[k - 1];	
 
-    // Classify elements into classes
-    for (size_t i = 0; i < n; ++i) {
-        size_t class_idx = static_cast<size_t>(scaling_factor * (arr[i] - min_val));
-        ++l[class_idx];
-    }
+	int i = 0;
+	int count = 0;
+	int k = m - 1;
+	while ( ++count_comparison && (count < arr.size())) {
+		while ( ++count_comparison && (i >= L[k])) {
+			i++;
+			k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
+		}
 
-    // Accumulate class counts to determine class boundaries
-    for (size_t i = 1; i < m; ++i) {
-        l[i] += l[i - 1];
-    }
+		int flash = arr[i];
+		while ( ++count_comparison && (i != L[k])) {
+			k = 1ll * (m - 1) * (flash - min_arr) / (max_arr - min_arr);
+			swap(arr[L[k] - 1], flash);
 
-    // Perform the flash sorting
-    size_t num_moved = 0;
-    size_t current_class = 0;
-    while (num_moved < n - 1) {
-        while (current_class >= l[current_class]) {
-            ++current_class; // Move to the next class
-        }
+			L[k]--;
+			count++;
+		}
+	}
 
-        size_t pos = l[current_class] - 1;
-        T temp = arr[pos];
-        arr[pos] = arr[current_class];
+	for (int k = 1; ++count_comparison && (k < m); k++) {
+		int selected = 0, j = 0;
 
-        while (true) {
-            size_t class_idx = static_cast<size_t>(scaling_factor * (temp - min_val));
-            if (class_idx >= m) class_idx = m - 1; // Handle edge case
-            pos = --l[class_idx];
-            if (pos == current_class) break;
-            swap(temp, arr[pos]);
-            ++num_moved;
-            ++count_comparison; // Increment comparison counter
-        }
-    }
+		for (int i = L[k - 1] + 1; ++count_comparison && (i < L[k]); i++) {
+			selected = arr[i];
+			j = i - 1;
+	
+			// Find place to insert selected element
+			while (++count_comparison && (j >= 0) && ++count_comparison && (arr[j] > selected)) {
+				arr[j + 1] = arr[j];
+				j--;
+			}
+			arr[j + 1] = selected;
+		}
+	}
 
-    // Final sorting within each class using insertion sort logic
-    for (size_t i = 1; i < n; ++i) {
-        T key = arr[i];
-        size_t j = i;
-        while (j > 0 && arr[j - 1] > key) {
-            ++count_comparison;
-            arr[j] = arr[j - 1];
-            --j;
-        }
-        if (j > 0) ++count_comparison;
-        arr[j] = key;
-    }
+	return;
 }
 
-template <class T>
-void flashSort(std::vector<T> &arr) {
-    size_t n = arr.size();
+template <typename T> void flashSort(std::vector<T> &arr) {
+	int min_arr = arr[0], max_arr = arr[0];
+	for (int i = 1;i < arr.size(); i++) {
+		if (arr[i] < min_arr)
+			min_arr = arr[i];
+		else if (arr[i] > max_arr)
+			max_arr = arr[i];
+	}
 
-    if (n <= 1) return; // Array is already sorted if it has 1 or no elements
+	if (max_arr == min_arr)
+		return;
 
-    // Find the minimum and maximum elements in the array
-    T min_val = arr[0], max_val = arr[0];
-    size_t max_idx = 0;
-    for (size_t i = 1; i < n; ++i) {
-        if (arr[i] < min_val) {
-            min_val = arr[i];
-        } else if (arr[i] > max_val) {
-            max_val = arr[i];
-            max_idx = i;
-        }
-    }
+	int m = arr.size() * 0.45; // 0.45 * n will be wrong
+	if (m <= 2) m = 2;
 
-    // Calculate the number of classes (bins)
-    if (max_val == min_val) return; // All elements are equal, no sorting needed
-    size_t m = n / 2; // Number of classes (can be adjusted)
-    std::vector<size_t> l(m, 0); // Classification array
+    std::vector<int> L(m, 0);
 
-    // Compute scaling factor
-    double scaling_factor = static_cast<double>(m - 1) / (max_val - min_val);
+	for (int i = 0; i < arr.size(); i++) {
+		int k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
+		L[k]++;
+	}
 
-    // Classify elements into classes
-    for (size_t i = 0; i < n; ++i) {
-        size_t class_idx = static_cast<size_t>(scaling_factor * (arr[i] - min_val));
-        ++l[class_idx];
-    }
+	for (int k = 1; k < m; k++) L[k] += L[k - 1];
+	
+	int i = 0;
+	int count = 0;
+	int k = m - 1;
+	while (count < arr.size()) {
+		while (i >= L[k]) {
+			i++;
+			k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
+		}
 
-    // Accumulate class counts to determine class boundaries
-    for (size_t i = 1; i < m; ++i) {
-        l[i] += l[i - 1];
-    }
+		int flash = arr[i];
+		while (i != L[k]) {
+			k = 1ll * (m - 1) * (flash - min_arr) / (max_arr - min_arr);
 
-    // Perform the flash sorting
-    size_t num_moved = 0;
-    size_t current_class = 0;
-    while (num_moved < n - 1) {
-        while (current_class >= l[current_class]) {
-            ++current_class; // Move to the next class
-        }
+			swap(arr[L[k] - 1], flash);
+			L[k]--;
+			count++;
+		}
+	}
 
-        size_t pos = l[current_class] - 1;
-        T temp = arr[pos];
-        arr[pos] = arr[current_class];
+	for (int k = 1; k < m; k++) {
+		int selected = 0, j = 0;
 
-        while (true) {
-            size_t class_idx = static_cast<size_t>(scaling_factor * (temp - min_val));
-            pos = --l[class_idx];
-            if (pos == current_class) break;
-            std::swap(temp, arr[pos]);
-            ++num_moved;
-        }
-    }
+		for (int i = L[k - 1] + 1; i < L[k]; i++) {
+			selected = arr[i];
+			j = i - 1;
+	
+			// Find place to insert selected element
+			while ((j >= 0) && (arr[j] > selected)) {
+				arr[j + 1] = arr[j];
+				j--;
+			}
+			arr[j + 1] = selected;
+		}
+	}
 
-    // Final sorting within each class
-    for (size_t i = 1; i < n; ++i) {
-        T key = arr[i];
-        size_t j = i;
-        while (j > 0 && arr[j - 1] > key) {
-            arr[j] = arr[j - 1];
-            --j;
-        }
-        arr[j] = key;
-    }
+	return;
 }
 
-// INSTANTIATION
-//flashSort with Compare
-template void flashSort(std::vector<int>&, size_t&);
-template void flashSort(std::vector<long long>&, size_t&);
-template void flashSort(std::vector<float>&, size_t&);
-template void flashSort(std::vector<double>&, size_t&);
-template void flashSort(std::vector<char>&, size_t&);
-
-// flashSort
-template void flashSort(std::vector<int>&);
-template void flashSort(std::vector<long long>&);
-template void flashSort(std::vector<float>&);
-template void flashSort(std::vector<double>&);
-template void flashSort(std::vector<char>&);
+template void flashSort(std::vector<int> &arr, size_t &count_comparison);
+template void flashSort(std::vector<int> &arr);

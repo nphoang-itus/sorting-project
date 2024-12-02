@@ -1,2 +1,5 @@
 .vscode/
 bin/main.exe
+bin/main2.exe
+data.csv
+Randomized data.csv
