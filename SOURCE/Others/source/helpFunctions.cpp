@@ -44,10 +44,12 @@ int random(int l, int r) {
 	
 	return 1ll * ran % (r - l + 1) + l;
 }
-bool readData(std::vector<int> &arr, char *fileName) {
+bool readData(std::vector<int> &arr, std::string fileName) {
     if (!arr.empty()) {
         arr.clear();
     }
+
+    fileName = RESOURCES_PATH + fileName;
     
 	std::fstream fin(fileName, std::ios::in);
 
@@ -68,7 +70,8 @@ bool readData(std::vector<int> &arr, char *fileName) {
     return true;
 }
 
-bool writeData(std::vector<int> &arr, char *fileName) {
+bool writeData(std::vector<int> &arr, std::string fileName) {
+    fileName = RESOURCES_PATH + fileName;
     std::fstream fout(fileName, std::ios::out);
 
     if (!fout) {

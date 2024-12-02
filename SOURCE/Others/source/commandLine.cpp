@@ -78,9 +78,9 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 }
 
 void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
-    experiment.file_name = argv[3];
+    experiment.file_name = argv[3];;
             
-    if (!readData(experiment.arr[0], argv[3])) {
+    if (!readData(experiment.arr[0], experiment.file_name)) {
         std::cout << "Invalid reading data from file!\n";
         exit(true);
     }
@@ -101,7 +101,7 @@ void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
     }
 
     experiment.arr[0].resize(experiment.input_size);
-    char file_name[] = "input.txt";
+    std::string file_name = "input.txt";
 
     generateData(experiment.arr[0], experiment.input_size, experiment.data_order_id);
     
@@ -122,7 +122,7 @@ void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
     for (int i = 0; i < NUMBER_DATA_ORDER; i++) {
         experiment.arr[i].resize(experiment.input_size);
         generateData(experiment.arr[i], experiment.input_size, i);
-        char file_name[] = "input_0.txt";
+        std::string file_name = "input_0.txt";
         file_name[6] = i + 1 + '0';
 
         if (!writeData(experiment.arr[i], file_name)) {
@@ -134,7 +134,7 @@ void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
 void commandLine4(SortExperiment &experiment, int &argc, char **&argv) {
     experiment.file_name = argv[4];
 
-    if (!readData(experiment.arr[0], argv[4])) {
+    if (!readData(experiment.arr[0], experiment.file_name)) {
         exit(true);
     }
     
@@ -152,7 +152,7 @@ void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
     }
 
     experiment.arr[0].resize(experiment.input_size);
-    char file_name[] = "input.txt";
+    std::string file_name = "input.txt";
     generateData(experiment.arr[0], experiment.input_size, experiment.data_order_id);
 
     if (!writeData(experiment.arr[0], file_name)) {

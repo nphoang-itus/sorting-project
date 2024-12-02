@@ -11,6 +11,8 @@
 #ifndef HELP_FUNCTIONS
 #define HELP_FUNCTIONS
 
+#define RESOURCES_PATH "../sorting-project/RESOURCE/"
+
 template <class T>
 void swap(T &a, T &b);
 
@@ -20,8 +22,8 @@ int max(int array[], int n);
 int max(int a, int b);
 int random(int l, int r);
 
-bool readData(std::vector<int> &arr, char *fileName);
-bool writeData(std::vector<int> &arr, char *fileName);
+bool readData(std::vector<int> &arr, std::string fileName);
+bool writeData(std::vector<int> &arr, std::string fileName);
 bool isNumber(char *str);
 int getOutputParameterID(char *param_flag);
 bool isOutputParameterID(char *param_flag);
