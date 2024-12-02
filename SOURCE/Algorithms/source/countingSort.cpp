@@ -62,12 +62,12 @@ void countingSort(std::vector<T>& array, size_t& count_comparison)
 }
 
 // INSTANTIATION
-//heapSort
+//countingSort
 template void countingSort(std::vector<int>&);
 
 template void countingSort(std::vector<long long>&);
 
-//heapSort with compare
+//countingSort with compare
 template void countingSort(std::vector<int>&, size_t&);
 
 template void countingSort(std::vector<long long>&, size_t&);
