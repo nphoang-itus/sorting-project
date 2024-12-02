@@ -2,18 +2,20 @@
 
 template <class T> 
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {
+    if (++count_comparison && (arr.size() <= 1)) return;
+
     // step 0: find min and max
 	int min_arr = arr[0], max_arr = arr[0];
-	for (int i = 1; ++count_comparison && (i < arr.size()); i++) {
-		if ( ++count_comparison && (arr[i] < min_arr)) {
+	for (int i = 1;++count_comparison && (i < arr.size()); i++) {
+		if (++count_comparison && (arr[i] < min_arr)) {
 			min_arr = arr[i];
 		}
-		else if ( ++count_comparison && (arr[i] > max_arr)) {
+		else if (++count_comparison && (arr[i] > max_arr)) {
 			max_arr = arr[i];
 		}
 	}
 
-	if ( ++count_comparison && (max_arr == min_arr))
+	if (++count_comparison && (max_arr == min_arr))
 		return;
 
 	int m = arr.size() * 0.45; // 0.45 * n will be wrong
@@ -21,24 +23,24 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 	
 	std::vector<int> L(m, 0);
 
-	for (int i = 0;  ++count_comparison && (i < arr.size()); i++) {
+	for (int i = 0; ++count_comparison && (i < arr.size()); i++) {
 		int k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
 		L[k]++;
 	}
 
-	for (int k = 1; ++count_comparison && (k < m); k++) L[k] += L[k - 1];	
+	for (int k = 1;++count_comparison && (k < m); k++) L[k] += L[k - 1];	
 
 	int i = 0;
 	int count = 0;
 	int k = m - 1;
-	while ( ++count_comparison && (count < arr.size())) {
-		while ( ++count_comparison && (i >= L[k])) {
+	while (++count_comparison && (count < arr.size())) {
+		while (++count_comparison && (i >= L[k])) {
 			i++;
 			k = 1ll * (m - 1) * (arr[i] - min_arr) / (max_arr - min_arr);
 		}
 
 		int flash = arr[i];
-		while ( ++count_comparison && (i != L[k])) {
+		while (++count_comparison && (i != L[k])) {
 			k = 1ll * (m - 1) * (flash - min_arr) / (max_arr - min_arr);
 			swap(arr[L[k] - 1], flash);
 
@@ -47,15 +49,15 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 		}
 	}
 
-	for (int k = 1; ++count_comparison && (k < m); k++) {
+	for (int k = 1;++count_comparison && (k < m); k++) {
 		int selected = 0, j = 0;
 
-		for (int i = L[k - 1] + 1; ++count_comparison && (i < L[k]); i++) {
+		for (int i = L[k - 1] + 1;++count_comparison && (i < L[k]); i++) {
 			selected = arr[i];
 			j = i - 1;
 	
 			// Find place to insert selected element
-			while (++count_comparison && (j >= 0) && ++count_comparison && (arr[j] > selected)) {
+			while (++count_comparison && (j >= 0) &&++count_comparison && (arr[j] > selected)) {
 				arr[j + 1] = arr[j];
 				j--;
 			}
@@ -67,6 +69,8 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 }
 
 template <class T> void flashSort(std::vector<T> &arr) {
+    if (arr.size() <= 1) return;
+
 	int min_arr = arr[0], max_arr = arr[0];
 	for (int i = 1;i < arr.size(); i++) {
 		if (arr[i] < min_arr)
