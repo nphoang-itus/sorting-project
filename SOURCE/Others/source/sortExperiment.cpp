@@ -104,7 +104,7 @@ void SortExperiment::runAlgorithmMode() {
     }
 
     if (loops == 1) {
-        char filename[] = "output.txt";
+        std::string filename = "output.txt";
         writeData(temp, filename);
     }
 }
