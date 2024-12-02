@@ -101,7 +101,7 @@ void binaryInsertionSort(std::vector<T>& array, size_t& count_comparison)
 }
 
 // INSTANTIATION
-//heapSort
+//binaryInsertionSort
 template size_t binarySearch(std::vector<int>&, int, size_t, size_t);
 template void binaryInsertionSort (std::vector<int>&);
 
@@ -117,7 +117,7 @@ template void binaryInsertionSort (std::vector<float>&);
 template size_t binarySearch(std::vector<char>&, char, size_t, size_t);
 template void binaryInsertionSort (std::vector<char>&);
 
-//heapSort with compare
+//binaryInsertionSort with compare
 template size_t binarySearch(std::vector<int>&, int, size_t, size_t, size_t&);
 template void binaryInsertionSort (std::vector<int>&, size_t&);
 
