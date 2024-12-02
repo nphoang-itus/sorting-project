@@ -148,7 +148,7 @@ template void Merge(std::vector<char>&, size_t, size_t, size_t);
 template void impleMergeSort(std::vector<char>&, size_t, size_t);
 template void mergeSort(std::vector<char>&);
 
-//heapSort with compare
+//mergeSort with compare
 template void Merge(std::vector<int>&, size_t, size_t, size_t, size_t&);
 template void impleMergeSort(std::vector<int>&, size_t, size_t, size_t&);
 template void mergeSort(std::vector<int>&, size_t&);
