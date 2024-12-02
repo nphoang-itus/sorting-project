@@ -1,6 +1,6 @@
 #include "../header/flashSort.hpp"
 
-template <typename T> 
+template <class T> 
 void flashSort(std::vector<T> &arr, size_t &count_comparison) {
     // step 0: find min and max
 	int min_arr = arr[0], max_arr = arr[0];
@@ -66,7 +66,7 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 	return;
 }
 
-template <typename T> void flashSort(std::vector<T> &arr) {
+template <class T> void flashSort(std::vector<T> &arr) {
 	int min_arr = arr[0], max_arr = arr[0];
 	for (int i = 1;i < arr.size(); i++) {
 		if (arr[i] < min_arr)
