@@ -131,7 +131,7 @@ void quickSort(std::vector<T>& array)
 }
 
 // INSTANTIATION
-//heapSort
+//quickSort
 template int Partition(std::vector<int>&, int, int);
 template void impleQuickSort(std::vector<int>&, int, int);
 template void quickSort(std::vector<int>&);
@@ -152,7 +152,7 @@ template int Partition(std::vector<char>&, int, int);
 template void impleQuickSort(std::vector<char>&, int, int);
 template void quickSort(std::vector<char>&);
 
-//heapSort with compare
+//quickSort with compare
 template int Partition(std::vector<int>&, int, int, size_t&);
 template void impleQuickSort(std::vector<int>&, int, int, size_t&);
 template void quickSort(std::vector<int>&, size_t&);
