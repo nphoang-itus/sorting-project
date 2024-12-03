@@ -5,7 +5,6 @@
 #include <fstream>
 #include <cstring>
 #include <ctime>
-#include <cstdlib>
 #include <chrono>
 
 #ifndef HELP_FUNCTIONS
