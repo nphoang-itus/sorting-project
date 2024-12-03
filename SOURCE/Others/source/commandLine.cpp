@@ -78,7 +78,7 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 }
 
 void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
-    experiment.file_name = argv[3];;
+    experiment.file_name = argv[3];
             
     if (!readData(experiment.arr[0], experiment.file_name)) {
         std::cout << "Invalid reading data from file!\n";

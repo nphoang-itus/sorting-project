@@ -6,6 +6,8 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 
     // step 0: find min and max
 	int min_arr = arr[0], max_arr = arr[0];
+	double alpha = 0.45;
+
 	for (int i = 1;++count_comparison && (i < arr.size()); i++) {
 		if (++count_comparison && (arr[i] < min_arr)) {
 			min_arr = arr[i];
@@ -18,7 +20,7 @@ void flashSort(std::vector<T> &arr, size_t &count_comparison) {
 	if (++count_comparison && (max_arr == min_arr))
 		return;
 
-	int m = arr.size() * 0.45; // 0.45 * n will be wrong
+	int m = arr.size() * alpha; // 0.45 * n will be wrong
 	if (++count_comparison && (m <= 2)) m = 2;
 	
 	std::vector<int> L(m, 0);
@@ -72,6 +74,8 @@ template <class T> void flashSort(std::vector<T> &arr) {
     if (arr.size() <= 1) return;
 
 	int min_arr = arr[0], max_arr = arr[0];
+	double alpha = 0.45;
+
 	for (int i = 1;i < arr.size(); i++) {
 		if (arr[i] < min_arr)
 			min_arr = arr[i];
@@ -82,7 +86,7 @@ template <class T> void flashSort(std::vector<T> &arr) {
 	if (max_arr == min_arr)
 		return;
 
-	int m = arr.size() * 0.45; // 0.45 * n will be wrong
+	int m = arr.size() * alpha; // 0.45 * n will be wrong
 	if (m <= 2) m = 2;
 
     std::vector<int> L(m, 0);

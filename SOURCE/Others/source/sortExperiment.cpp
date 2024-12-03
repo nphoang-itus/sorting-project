@@ -3,6 +3,9 @@
 SortExperiment::SortExperiment() {
     arr.resize(NUMBER_SORT_ALGORITHM);
     results.resize(NUMBER_SORT_ALGORITHM);
+    output_parameter = -1;
+    input_size = 0;
+    is_running_all = false;
 }
 
 SortExperiment::~SortExperiment() {

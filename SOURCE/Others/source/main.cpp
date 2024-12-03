@@ -14,7 +14,7 @@ void overview() { // This function is for testing the algorithms with different 
 
     for (int dataOrderCode = 0; dataOrderCode < NUMBER_DATA_ORDER; dataOrderCode++) {
         std::string fileName = RESOURCES_PATH + getDataOrderName(dataOrderCode) + ".csv";
-        std::ofstream out(fileName);
+        std::ofstream out(fileName);    
 
         out << "Data order: " << getDataOrderName(dataOrderCode) << '\n';
         out << "Data size";

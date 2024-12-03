@@ -4,22 +4,17 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <time.h>
-#include <stdlib.h>
+#include <ctime>
+#include <cstdlib>
 #include <chrono>
 
 #ifndef HELP_FUNCTIONS
 #define HELP_FUNCTIONS
 
-#define RESOURCES_PATH "../sorting-project/RESOURCE/"
+#define RESOURCES_PATH "RESOURCE/"
 
 template <class T>
 void swap(T &a, T &b);
-
-int max(int array[], int n, long long &count_comparison);
-int max(int a, int b, long long &count_comparison);
-int max(int array[], int n);
-int max(int a, int b);
 int random(int l, int r);
 
 bool readData(std::vector<int> &arr, std::string fileName);

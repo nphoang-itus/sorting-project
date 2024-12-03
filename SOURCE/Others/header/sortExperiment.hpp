@@ -19,7 +19,7 @@
 #ifndef SORT_EXPERIMENT_HPP
 #define SORT_EXPERIMENT_HPP
 
-#define NUMBER_DATA_ORDER 4 // 0: Random, 1: Sorted, 2: Reverse, 3: Nearly Sorted
+#define NUMBER_DATA_ORDER 4 // 0: Random, 1: Nearly Sorted, 2: Sorted, 3: Reverse
 #define NUMBER_SORT_ALGORITHM 12
 #define SELECTION_SORT 0
 #define INSERTION_SORT 1
@@ -44,9 +44,9 @@ class SortExperiment {
     public:
         std::vector<std::vector<int>> arr;      // array of data to sort, we need to store 4 arrays for 4 data orders
         std::string file_name;
-        int output_parameter;                   // 0: running time, 1: number of comparison, 2: both
+        int output_parameter;                   // 1: running time, 2: comparison, 3: both
         int input_size;                         // number of elements in the array
-        int data_order_id;                      // 0: Random, 1: Sorted, 2: Reverse, 3: Nearly Sorted
+        int data_order_id;                      // 0: Random, 1: Nearly Sorted, 2: Sorted, 3: Reverse
         int algorithm_id[2];                    // for compare mode, we need to identify 2 algorithms
         bool is_algorithm_mode;                 // true: algorithm mode, false: compare mode
         bool is_input_from_file;                // for  command line 1 & 4
