@@ -1,9 +1,13 @@
 #include "../header/quickSort.hpp"
 
-void quickSort(int array[], int n, long long &count_comparison) {
+
+
+template <class T>
+void quickSort(std::vector<T> &array) {
 
 }
 
-void quickSort(int array[], int n) {
+template <class T>
+void quickSort(std::vector<T> &array, size_t &count_comparison) {
 
 }

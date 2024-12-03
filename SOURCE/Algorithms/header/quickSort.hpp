@@ -2,7 +2,10 @@
 #ifndef QUICK_SORT_HPP
 #define QUICK_SORT_HPP
 
-void quickSort(int array[], int n, long long &count_comparison);
-void quickSort(int array[], int n);
+template <class T>
+void quickSort(std::vector<T> &array);
+
+template <class T>
+void quickSort(std::vector<T> &array, size_t &count_comparison);
 
 #endif // QUICK_SORT_HPP

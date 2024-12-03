@@ -6,16 +6,11 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
         std::cout << "   -a: Algorithm mode\n";
         std::cout << "   -c: Compare mode\n";
         exit(EXIT_FAILURE);
-    }
-
-
-    else if (!strcmp(argv[1], "-a")) {
+    } else if (!strcmp(argv[1], "-a")) {
         experiment.is_algorithm_mode = true;
-    }
-    else if (!strcmp(argv[1], "-c")) {
+    } else if (!strcmp(argv[1], "-c")) {
         experiment.is_algorithm_mode = false;
-    }
-    else {
+    } else {
         std::cout << "Invalid mode: only -a for algorithm mode and -c for compare mode\n";
         return;
     }
@@ -57,7 +52,7 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
             return;
         }
 
-        experiment.is_input_from_file = isNumber(argv[4]);
+        experiment.is_input_from_file = !isNumber(argv[4]);
 
         if (experiment.is_input_from_file) {
             commandLine4(experiment, argc, argv);
@@ -140,6 +135,8 @@ void commandLine4(SortExperiment &experiment, int &argc, char **&argv) {
     if (!readData(experiment.arr[0], argv[4])) {
         exit(true);
     }
+
+    experiment.input_size = experiment.arr[0].size();
 }
 
 void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
