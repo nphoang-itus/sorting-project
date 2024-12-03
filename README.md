@@ -43,64 +43,64 @@ Turn off this flag, and re-build to sort in real size.
 
 There are 5 commands to run this file
 
-- Command 1: Run a sorting algorithm on the given input data
+### Command 1: Run a sorting algorithm on the given input data
 
 ```
 ./bin/main.exe -a [Algorithm] [Input file] [Output parameter(s)]
 ```
 
-For example
+- For example:
 
 ```sh
 ./bin/main.exe -a radix-sort input.txt -time
 ```
 
-- Command 2: Run a sorting algorithm on the data generated automatically with specified size and order
+### Command 2: Run a sorting algorithm on the data generated automatically with specified size and order
 
 ```
 ./bin/main.exe -a [Algorithm] [Input size] [Input order] [Output parameter(s)]
 ```
 
-For example
+- For example:
 
 ```sh
-./bin/main.exe -a selection-sort 50 -rand -comp
+./bin/main.exe -a quick-sort 10000 random -time
 ```
 
-- Command 3: Run a sorting algorithm on ALL data arrangements of a specified size
+### Command 3: Compare two sorting algorithms on the same input data
 
 ```
-./bin/main.exe -a [Algorithm] [Input size] [Output parameter(s)]
+./bin/main.exe -c [Algorithm 1] [Algorithm 2] [Input file] [Output parameter(s)]
 ```
 
-For example
+- For example:
 
 ```sh
-./bin/main.exe -a selection-sort 50 -both
+./bin/main.exe -c quick-sort merge-sort input.txt -time
 ```
 
-- Command 4:  Run two sorting algorithms on the given input
+### Command 4: Compare two sorting algorithms on the data generated automatically with specified size and order
 
 ```
-./bin/main.exe -c [Algorithm 1] [Algorithm 2] [Input file]
+./bin/main.exe -c [Algorithm 1] [Algorithm 2] [Input size] [Input order] [Output parameter(s)]
 ```
 
-For example
+- For example:
 
 ```sh
-./bin/main.exe -c heap-sort merge-sort input.txt
+./bin/main.exe -c heap-sort shell-sort 10000 random -time
 ```
 
-- Command 5: Run two sorting algorithms on the data generated automatically
+### Command 5: Run all sorting algorithms on the data generated automatically with specified size and order
 
 ```
-./bin/main.exe -c [Algorithm 1] [Algorithm 2] [Input size] [Input order]
+./bin/main.exe -all [Input size] [Input order] [Output parameter(s)]
 ```
 
-For example
+- For example:
 
 ```sh
-./bin/main.exe -c quick-sort merge-sort 100000 -nsorted
+./bin/main.exe -all 10000 random -time
 ```
 
 ### Input arguments
