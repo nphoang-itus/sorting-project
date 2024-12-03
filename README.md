@@ -1,7 +1,7 @@
 # Sorting-project
 Lab 03 project in DSA: Study algorithms related to sorting techniques.
 
-(Open Terminal in sorting-project folder)\
+(Open Terminal in sorting-project folder)
 ## Build for Windows: 
 
 ``` powershell
