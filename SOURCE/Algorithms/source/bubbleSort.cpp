@@ -3,7 +3,7 @@
 template <class T>
 void bubbleSort(std::vector<T> &arr, size_t &count_comparison) {
     count_comparison = 0;
-    bool swapped = false;
+    bool swapped = false;                                           //sử dụng bản Improved Bubble Sort
 
     for (int i = 0; ++count_comparison && (i < arr.size() - 1); i++) {
         swapped = false;
@@ -14,17 +14,17 @@ void bubbleSort(std::vector<T> &arr, size_t &count_comparison) {
             }
         }
 
-        if (++count_comparison && (swapped == false))
+        if (++count_comparison && (swapped == false))               //kết thúc nếu mảng đã được sắp xếp
             break;
     }
 }
 
 template <class T>
 void bubbleSort(std::vector<T> &arr) {
-    bool swapped = false;
+    bool swapped = false;                                       //sử dụng bản Improved Bubble Sort
 
     for (int i = 0; i < arr.size() - 1; i++) {
-        swapped = false;
+        swapped = false;                                
         for (int j = 0; j < arr.size() - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 swap(arr[j], arr[j + 1]);
@@ -32,7 +32,7 @@ void bubbleSort(std::vector<T> &arr) {
             }
         }
  
-        if (swapped == false)
+        if (swapped == false)                               //nếu mảng đã được sắp xếp thì dừng lại
             break;
     }
 }
