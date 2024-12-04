@@ -1,7 +1,7 @@
 #include "../header/binaryInsertionSort.hpp"
 
 template<class T>
-size_t binarySearch(std::vector<T>& array, T target, size_t low, size_t high)
+size_t binarySearch(std::vector<T>& array, T target, size_t low, size_t high)   // thuật toán tìm kiếm nhị phân
 {
     while(low < high)
     {
@@ -40,8 +40,8 @@ void binaryInsertionSort(std::vector<T>& array)
     {
         j = i - 1;
         selected = array[i];
-        location = binarySearch(array, selected, 0, j);
-        while(j >= location)
+        location = binarySearch(array, selected, 0, j);     //sử dụng tìm kiếm nhị phân để tìm vị trí cần chèn
+        while(j >= location)                                //tương tự như Insertion Sort
         {
             array[j + 1] = array[j];
             j--;
@@ -51,7 +51,7 @@ void binaryInsertionSort(std::vector<T>& array)
 }
 
 template<class T>
-size_t binarySearch(std::vector<T>& array, T target, size_t low, size_t high, size_t& count_comparison)
+size_t binarySearch(std::vector<T>& array, T target, size_t low, size_t high, size_t& count_comparison) //thuật toán tìm kiếm nhị phân
 {
     while(++count_comparison && low < high)
     {
@@ -90,8 +90,8 @@ void binaryInsertionSort(std::vector<T>& array, size_t& count_comparison)
     {
         j = i - 1;
         selected = array[i];
-        location = binarySearch(array, selected, 0, j, count_comparison);
-        while(++count_comparison && j >= location)
+        location = binarySearch(array, selected, 0, j, count_comparison);   //tìm kiếm nhị phân để tìm kiếm vị trí cần chèn
+        while(++count_comparison && j >= location)                      //Tương tự InsertionSort
         {
             array[j + 1] = array[j];
             j--;
