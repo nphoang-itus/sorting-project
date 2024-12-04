@@ -3,10 +3,10 @@
 template<class T>
 int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison)
 {
-    int mid = (low + high) >> 1;
+    int mid = (low + high) >> 1;                //dịch tất cả bit sang phải -> chia 2
     T pivot = array[mid];
     int index_pivot = mid;
-    if (++count_comparison && pivot > array[low] && ++count_comparison && pivot > array[high])
+    if (++count_comparison && pivot > array[low] && ++count_comparison && pivot > array[high])  //phần tử pivot là phần tử trung vị của array[low], array[high] và array[mid]
     {
         if (++count_comparison && array[low] > array[high])
         {
@@ -36,7 +36,7 @@ int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison
         }
     }
     int i = low - 1;
-    for (int j = low; ++count_comparison && j <= high - 1; j++)
+    for (int j = low; ++count_comparison && j <= high - 1; j++)         //tìm vị trí thích hợp cho pivot
     {
         if (++count_comparison && array[j] < pivot)
         {
@@ -44,7 +44,7 @@ int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison
             swap(array[i], array[j]);
         }
     }
-    swap(array[i + 1], array[index_pivot]);
+    swap(array[i + 1], array[index_pivot]);                     //đưa pivot về đúng vị trí
     return i + 1;
 }
 
@@ -53,25 +53,25 @@ void impleQuickSort(std::vector<T>& array, int low, int high, size_t& count_comp
 {
     if (++count_comparison && low < high)
     {
-        int par = Partition(array, low, high, count_comparison);
-        impleQuickSort(array, low, par - 1, count_comparison);
-        impleQuickSort(array, par + 1, high, count_comparison);
+        int par = Partition(array, low, high, count_comparison);        //tìm pivot
+        impleQuickSort(array, low, par - 1, count_comparison);          //thực hiện quickSort ở bên trái pivot
+        impleQuickSort(array, par + 1, high, count_comparison);         //thực hiện quickSort ở bên phải pivot
     }
 }
 
 template<class T>
 void quickSort(std::vector<T>& array, size_t& count_comparison) 
 {
-    impleQuickSort(array, 0, array.size() - 1, count_comparison);
+    impleQuickSort(array, 0, array.size() - 1, count_comparison);       
 }
 
 template<class T>
 int Partition(std::vector<T>& array, int low, int high)
 {
-    int mid = (low + high) >> 1;
+    int mid = (low + high) >> 1;                //dịch chuyển các bit sang phải 1 đơn vị -> chia 2
     T pivot = array[mid];
     int index_pivot = mid;
-    if (pivot > array[low] && pivot > array[high])
+    if (pivot > array[low] && pivot > array[high])      //phần tử pivot là phần tử trung vị của array[low], array[high] và array[mid]
     {
         if (array[low] > array[high])
         {
@@ -101,7 +101,7 @@ int Partition(std::vector<T>& array, int low, int high)
         }
     }
     int i = low - 1;
-    for (int j = low; j <= high - 1; j++)
+    for (int j = low; j <= high - 1; j++)               //tìm vị trí của phần tử pivot
     {
         if (array[j] < pivot)
         {
@@ -109,7 +109,7 @@ int Partition(std::vector<T>& array, int low, int high)
             swap(array[i], array[j]);
         }
     }
-    swap(array[i + 1], array[index_pivot]);
+    swap(array[i + 1], array[index_pivot]);             //đưa pivot về đúng vị trí
     return i + 1;
 }
 
@@ -118,9 +118,9 @@ void impleQuickSort(std::vector<T>& array, int low, int high)
 {
     if (low < high)
     {
-        int par = Partition(array, low, high);
-        impleQuickSort(array, low, par - 1);
-        impleQuickSort(array, par + 1, high);
+        int par = Partition(array, low, high);          //tìm pivot
+        impleQuickSort(array, low, par - 1);            //thực hiện quickSort ở bên trái pivot
+        impleQuickSort(array, par + 1, high);           //thực hiện quickSort ở bên phải pivot
     }
 }
 
