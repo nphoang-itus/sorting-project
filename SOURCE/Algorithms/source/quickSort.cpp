@@ -1,7 +1,7 @@
 #include "../header/quickSort.hpp"
 
 template<class T>
-int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison)
+int Partition(std::vector<T>& array, int low, int high, size_t& count_comparison)   //sử dụng cải tiến với lấy pivot là trung vị của 3 số array[low], array[high] và array[mid]
 {
     int mid = (low + high) >> 1;                //dịch tất cả bit sang phải -> chia 2
     T pivot = array[mid];
@@ -66,7 +66,7 @@ void quickSort(std::vector<T>& array, size_t& count_comparison)
 }
 
 template<class T>
-int Partition(std::vector<T>& array, int low, int high)
+int Partition(std::vector<T>& array, int low, int high) //sử dụng cải tiến với lấy pivot là trung vị của 3 số array[low], array[high] và array[mid]
 {
     int mid = (low + high) >> 1;                //dịch chuyển các bit sang phải 1 đơn vị -> chia 2
     T pivot = array[mid];
