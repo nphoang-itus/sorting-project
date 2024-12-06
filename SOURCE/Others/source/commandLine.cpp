@@ -106,7 +106,6 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
 }
 
 void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
-    std::cout << argc << '\n';
     if (argc != 6) {
         std::cout << "Invalid command line syntax!\n";
         exit(true);
