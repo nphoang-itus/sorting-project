@@ -5,5 +5,5 @@ Lab 03 project in DSA: Study algorithms related to sorting techniques.
 ## Build for Windows: 
 
 ``` powershell
-g++ SOURCE/Algorithms/source/*.cpp  SOURCE/Others/source/*.cpp -o bin/main.exe
+g++ SOURCE/Algorithms/source/*.cpp  SOURCE/Others/source/*.cpp -o bin/01.exe
 ```
