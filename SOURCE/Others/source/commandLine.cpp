@@ -37,9 +37,9 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 
         else {
             experiment.input_size = atoi(argv[3]);
-            experiment.is_running_all = getOutputParameterID(argv[4]) == 3 ? true : false;
+            experiment.is_running_all = isOutputParameterID(argv[4]);
 
-            if (!experiment.is_running_all && getOutputParameterID(argv[4]) != -1) {
+            if (!experiment.is_running_all) {
                 commandLine2(experiment, argc, argv);
             }
 
@@ -106,6 +106,7 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
 }
 
 void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
+    std::cout << argc << '\n';
     if (argc != 6) {
         std::cout << "Invalid command line syntax!\n";
         exit(true);

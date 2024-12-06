@@ -80,10 +80,10 @@ int getOutputParameterID(char *param_flag) {
 }
 
 bool isOutputParameterID(char *param_flag) {
-    if (getOutputParameterID(param_flag) == -1) {
-        return false;
+    if (getDataOrderID(param_flag) == -1) {
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool isNumber(char *str) {
