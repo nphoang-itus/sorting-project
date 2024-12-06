@@ -78,6 +78,11 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 }
 
 void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
+    if (argc != 5) {
+        std::cout << "Invalid command line syntax!\n";
+        exit(true);
+    }
+
     experiment.file_name = argv[3];
             
     if (!readData(experiment.arr[0], experiment.file_name)) {
@@ -90,6 +95,11 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
 }
 
 void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
+    if (argc != 6) {
+        std::cout << "Invalid command line syntax!\n";
+        exit(true);
+    }
+
     experiment.data_order_id = getDataOrderID(argv[4]);
     experiment.output_parameter = getOutputParameterID(argv[5]);
 
@@ -111,6 +121,11 @@ void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
 }
 
 void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
+    if (argc != 5) {
+        std::cout << "Invalid command line syntax!\n";
+        exit(true);
+    }
+
     experiment.output_parameter = getOutputParameterID(argv[4]);
 
     if (experiment.output_parameter == -1) {
@@ -132,6 +147,11 @@ void commandLine3(SortExperiment &experiment, int &argc, char **&argv) {
 }
 
 void commandLine4(SortExperiment &experiment, int &argc, char **&argv) {
+    if (argc != 5) {
+        std::cout << "Invalid command line syntax!\n";
+        exit(true);
+    }
+
     experiment.file_name = argv[4];
 
     if (!readData(experiment.arr[0], experiment.file_name)) {
@@ -142,6 +162,11 @@ void commandLine4(SortExperiment &experiment, int &argc, char **&argv) {
 }
 
 void commandLine5(SortExperiment &experiment, int &argc, char **&argv) {
+    if (argc != 6) {
+        std::cout << "Invalid command line syntax!\n";
+        exit(true);
+    }
+
     experiment.input_size = atoi(argv[4]);
     experiment.data_order_id = getDataOrderID(argv[5]);
 
