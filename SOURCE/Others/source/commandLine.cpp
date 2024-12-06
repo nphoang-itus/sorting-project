@@ -1,6 +1,10 @@
 #include "../header/commandLine.hpp"
 
 void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv) {
+    if (argc == 1) {
+        return;
+    }
+    
     if (argc <= 4) {
         std::cout << "Invalid command line syntax!\n";
         return;
