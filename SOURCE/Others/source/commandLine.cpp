@@ -1,7 +1,8 @@
 #include "../header/commandLine.hpp"
 
 void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv) {
-    if (argc == 1) {
+    if (argc <= 4) {
+        std::cout << "Invalid command line syntax!\n";
         return;
     }
 
@@ -32,9 +33,9 @@ void executeWithCommandLine(SortExperiment &experiment, int &argc, char **&argv)
 
         else {
             experiment.input_size = atoi(argv[3]);
-            experiment.is_running_all = isOutputParameterID(argv[4]);
+            experiment.is_running_all = getOutputParameterID(argv[4]) == 3 ? true : false;
 
-            if (!experiment.is_running_all) {
+            if (!experiment.is_running_all && getOutputParameterID(argv[4]) != -1) {
                 commandLine2(experiment, argc, argv);
             }
 
@@ -92,6 +93,12 @@ void commandLine1(SortExperiment &experiment, int &argc, char **&argv) {
 
     experiment.input_size = experiment.arr[0].size();
     experiment.output_parameter = getOutputParameterID(argv[4]);
+
+    if (experiment.output_parameter == -1) {
+        std::cout << "Invalid output parameter!\n";
+        std::cout << "Try: -time, -comp, -both\n";
+        exit(true);
+    }
 }
 
 void commandLine2(SortExperiment &experiment, int &argc, char **&argv) {
