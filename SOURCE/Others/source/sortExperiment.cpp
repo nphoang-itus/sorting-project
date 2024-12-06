@@ -35,10 +35,11 @@ void SortExperiment::printResult() {
         for (int i = 0; i < number_data_order; i++) {
             if (!is_input_from_file) {
                 if (is_running_all) {
-                    std::cout << '\n';
+                    std::cout << "\nInput order: " << getDataOrderName(i) << '\n';
                 }
-        
-                std::cout << "Input order: " << getDataOrderName(i) << '\n';
+                else {
+                    std::cout << "Input order: " << getDataOrderName(data_order_id) << '\n';
+                }        
             }
 
             std::cout << "------------------------------------\n";
@@ -66,11 +67,11 @@ void SortExperiment::printResult() {
         std::cout << "Input size: " << input_size << '\n';
         
         if (!is_input_from_file) {
-            std::cout << "\nInput order: " << getDataOrderName(data_order_id) << '\n';
+            std::cout << "Input order: " << getDataOrderName(data_order_id) << '\n';
         }
 
         std::cout << "---------------------------------------------\n";
-        std::cout << "Running time: " << results[0].running_time.count() << " | " << results[1].running_time.count() << '\n';
+        std::cout << "Running time: " << results[0].running_time.count() << " ms | " << results[1].running_time.count() << " ms\n";
         std::cout << "Comparisons: " << results[0].count_comparison << " | " << results[1].count_comparison << '\n';
     }
 
