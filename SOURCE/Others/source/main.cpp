@@ -1,6 +1,6 @@
 #include "../header/commandLine.hpp"
 
-#define EXPERIMENT
+// #define EXPERIMENT
 
 void overview() { // This function is for testing the algorithms with different data sizes and data orders
     int data_test[6] = {10000, 30000, 50000, 100000, 300000, 500000};
