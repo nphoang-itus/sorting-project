@@ -35,7 +35,7 @@ void SortExperiment::printResult() {
         for (int i = 0; i < number_data_order; i++) {
             if (!is_input_from_file) {
                 if (is_running_all) {
-                    std::cout << "Input order: " << getDataOrderName(i) << '\n';
+                    std::cout << "\nInput order: " << getDataOrderName(i) << '\n';
                 }
                 else {
                     std::cout << "Input order: " << getDataOrderName(data_order_id) << '\n';
