@@ -89,9 +89,9 @@ std::string getDataOrderName(int data_order_id) {
 int getDataOrderID(char agr_flag[]) {
 
     if (!strcmp(agr_flag, "-rand")) return 0;
-    else if (!strcmp(agr_flag, "-sorted")) return 1;
-    else if (!strcmp(agr_flag, "-rev")) return 2;
-    else if (!strcmp(agr_flag, "-nsorted")) return 3;
+    else if (!strcmp(agr_flag, "-nsorted")) return 1;
+    else if (!strcmp(agr_flag, "-sorted")) return 2;
+    else if (!strcmp(agr_flag, "-rev")) return 3;
 
     return -1;
 }
