@@ -3,3 +3,4 @@
 *.xls
 *.txt
 RESOURCE/input.txt
+.DS_Store
